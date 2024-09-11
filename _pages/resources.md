@@ -19,30 +19,5 @@ author_profile: true
 
 - **Deep learning** by Ian Goodfellow, Yoshua Bengio, Aaron Courville
 
-## Reviews
 
-- [The density-matrix renormalization group in the age of matrix product states](https://www.sciencedirect.com/science/article/abs/pii/S0003491610001752) by U. Schollwöck
-- [Low entanglement wavefunctions](https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wcms.1095) by G. K.-L. Chan
-- [A practical introduction to tensor networks: Matrix product states and projected entangled pair states](https://www.sciencedirect.com/science/article/abs/pii/S0003491614001596) by R. Orús
-- [Quantum computational chemistry](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.92.015003) by S. McArdle, S. Endo, A. Aspuru-Guzik, S. C. Benjamin, and X. Yuan
-- [Ab initio quantum chemistry with neural-network wavefunctions](https://www.nature.com/articles/s41570-023-00516-8) by J. Hermann, J. Spencer, K. Choo, A. Mezzacapo, W. M. C. Foulkes, D. Pfau, G. Carleo and F. Noé
-- [An Introduction to Coupled Cluster Theory for Computational Chemists](https://onlinelibrary.wiley.com/doi/10.1002/9780470125915.ch2) by T. Daniel Crawford and H. F. Schaefer III
-
-## Talks
-
-- [2023 量子计算化学菁致讲习班](https://www.koushare.com/video/videodetail/73730)
-
-## Writings
-
-- [overleaf](https://www.overleaf.com/): online latex editor
-- plot: matplotlib, seaborn, ...
-
-## Programming and Software
-
-- Git: github, gitlab, ... 
-- Python: numpy, scipy, pytorch, jax, ...
-- Mathematica
-- [C++](https://en.cppreference.com/w/)
-- GPU: cuda, cublas, magma, ...
-- [PySCF](https://github.com/pyscf/pyscf)
 
