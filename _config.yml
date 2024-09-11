@@ -21,7 +21,7 @@ repository               : "shanghui/shanghui.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Honghui Shang"
   pronouns         : # example: "she/her"  
   bio              : "Professor at USTC in Quantum Physics and Chemistry"
