@@ -5,55 +5,22 @@ permalink: /research/
 author_profile: true
 ---
 
-Chemical systems with transition metal centers have fascinating functionalities in catalysis, illuminessence, and quantum information science. However, these systems are extremely challenging for computational studies. From the electronic structure aspect, the main theoretical bottlenecks involve:
+In our group,  we develop the physical algorithm and numerical methods for the scientific calculations (quantum algorithms, artificial intelligence, first-principles methods) as well as accelerating these applications in the highperformance computers. If you find this interesting and exciting, you can find our articles on [Google Scholar profile](https://scholar.google.com/citations?user=HBY4LJ8AAAAJ&hl=zh-CN). Topics we are currently working on include:
 
-**1. Strong correlation**: requiring efficient methods for large active space (~100 d/f orbitals)
+## 1. All-electron density functional perturbation theory
 
-**2. Dynamic correlation**: requiring nonperturbative methods beyond MRPT2 for chemical accuracy
+We have proposed a computational framework for density functional perturbation theory with all-electron, full-potential accuracy. Pioneered the development and implementation of computational methods simultaneously adaptable to molecules and solids, as well as to external perturbations such as atomic displacements and electric fields. Achieved billion-core scalable all-electron, full-potential first-principles calculations on China's exascale heterogeneous many-core supercomputers.
 
-**3. Excited states**: requiring a balanced treatment for different types of excitations (local and delocalized)
 
-**4. Spectroscopies**: requiring relativistic effects in particular spin-orbit couplings (EPR/X-ray/Mössbauer)
+## 2. High performance quantum computing emulation for quantum chemistry
 
-**5. Environments**: requiring the ability to handle large systems
+ We demonstrate a high-performance and massively parallel variational quantum eigensolver (VQE) simulator based on matrix product states, combined with embedding theory for solving large-scale quantum computing emulation for quantum chemistry on HPC platforms. We apply this method to study the torsional barrier of ethane and the quantification of the protein–ligand interactions. Our largest simulation reaches 1000 qubits, and a performance of 216.9 PFLOP/s is achieved on a new Sunway supercomputer, which sets the state-of-the-art for quantum computing emulation for quantum chemistry. 
 
-In our group, we develop new methods and computational tools for dealing with these strongly correlated systems in chemistry based on new insights and technologies from other areas, such as condense matter physics, artificial intelligence, and quantum computing. If you find this interesting and exciting, you can find our articles on [Google Scholar profile](https://scholar.google.com/citations?user=MYZZUJ0AAAAJ&hl=en). Topics we are currently working on include:
 
-## 1. Quantum algorithms for electronic structure problems
+## 3. QiankunNet: Neural network quantum state (NNQS) method for quantum chemistry
 
-We are the first to develop quantum algorithms for molecular response properties[1] and performed real experimental simulation of molecular absorption spectra on quantum hardware[2]. We are interested in designing new efficient quantum wavefunction ansatz[3] for studying multi-configurational problems using quantum computers[4].
+The fundamental many-electron Schrodinger equation is solved straightforwardly with QiankunNet, a neural network quantum state (NNQS) framework based on generative Transformer architecture along with a batched autoregressive sampling method tailored for this Transformer-based ansatz in quantum chemistry calculations. This approach significantly improves the accuracy and efficiency of first-principles calculations compared to previous
+fermionic ansatz methods. QiankunNet showcases the power of the Transformer-based language model in achieving
+unprecedented efficiency in quantum chemistry calculations, opening up new avenues for chemical discovery and demonstrating the potential to solve the large-scale Schrodinger equation with modest computational cost.
 
-<img src="../images/vqr.jpeg" width="500">
-
-Reference:
-
-1. X. Cai, W.-H. Fang, H. Fan, Z. Li, Phys. Rev. Res. 2, 033324 (2020)
-
-2. K. Huang, et al. J. Phys. Chem. Lett. 13, 9114-9121 (2022) 
-
-3. X. Xiao, et al. J. Chem. Theory Comput. 20, 1912-1922 (2024)
-
-4. S. Zhao, et al. J. Phys. Chem. Lett. 15, 7244-7253 (2024)
-
-## 2. High performance computing for strong electron correlation
-
-We developed the first distributed multi-GPU parrallelized ab initio DMRG algorithm[1], and proposed an efficient relativistic DMRG algorithm using time-reversal symmetry[2]. These powerful tools will lead to quantitative accuracy for polynuclear transition metal complexes using the state-of-the-art AI hardware. We are also interested in exploring tensor network states beyond matrix product states[3].
-
-<img src="../images/dmrg.jpg" width="500">
-
-Reference:
-
-1. C. Xiang, W. Jia, W.-H. Fang, Z. Li, J. Chem. Theory Comput. 20, 775-786 (2024)
-
-2. Z. Li, J. Chem. Phys. 158, 044119 (2023)
-
-3. Z. Li, Electron. Struct. 3, 014001 (2021)
-
-## 3. Unconventional wavefunction ansatz inspired from neural networks
-
-Coming soon
-
-## 4. Novel methods for strong correlation based on locality
-
-Coming soon
 
