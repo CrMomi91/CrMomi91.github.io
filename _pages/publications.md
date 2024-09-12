@@ -4,7 +4,6 @@ title: "Publications"
 permalink: /publications/
 author_profile: true
 ---
-publication 
 
 * [2010(2)](#Y2010)
 * [2011(1)](#Y2011)
