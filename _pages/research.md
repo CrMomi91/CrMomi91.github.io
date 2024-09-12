@@ -5,7 +5,7 @@ permalink: /research/
 author_profile: true
 ---
 
-In our group,  we develop the physical algorithm and numerical methods for the scientific calculations (quantum algorithms, artificial intelligence, first-principles methods) as well as accelerating these applications in the highperformance computers. If you find this interesting and exciting, you can find our articles on [Google Scholar profile](https://scholar.google.com/citations?user=HBY4LJ8AAAAJ&hl=zh-CN). Topics we are currently working on include:
+In our group,  we develop the physical algorithm and numerical methods for the scientific calculations as well as accelerating these applications in the highperformance computers. If you find this interesting and exciting, you can find our articles on [Google Scholar profile](https://scholar.google.com/citations?user=HBY4LJ8AAAAJ&hl=zh-CN). Topics we are currently working on include:
 
 ## 1. All-electron density functional perturbation theory
 
