@@ -8,9 +8,6 @@ author_profile: true
 ## Current members
 
 - Bowen Kan (阚博文) 博士生
-- Huan Ma (马欢) 博士生
-- Lizhong Fu (付礼中) 博士生
-- Zhiqian Xu (徐直前) 博士生
 - Daiyou Xie (谢岱佑) 博士生
 - Pengyou Zhou (周鹏宇) 硕士生
 - Bowen Zhao (赵博文) 硕士生
