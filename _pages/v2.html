@@ -1,0 +1,697 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乾坤网络(QiankunNet)发展时间线</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --primary-color: #2e86de;
+            --secondary-color: #8e44ad;
+            --accent-color: #f39c12;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --error-color: #e74c3c;
+            --gradient-start: #3498db;
+            --gradient-end: #9b59b6;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: #f9fafc;
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .page-container {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .header-section {
+            position: relative;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,128L48,149.3C96,171,192,213,288,218.7C384,224,480,192,576,176C672,160,768,160,864,170.7C960,181,1056,203,1152,186.7C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: 100%;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-section h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        
+        .header-section p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .timeline-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            position: relative;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        
+        .intro-text p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 10px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .timeline-item {
+            width: 100%;
+            position: relative;
+            margin-bottom: 80px;
+            perspective: 1000px;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .timeline-content.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            float: left;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            float: right;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            width: 0;
+            height: 0;
+            top: 30px;
+            border-width: 15px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            border-color: transparent transparent transparent white;
+            right: -30px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            border-color: transparent white transparent transparent;
+            left: -30px;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            position: absolute;
+            top: -20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-date {
+            right: -150px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            left: -150px;
+        }
+        
+        .timeline-content h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .timeline-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            border-radius: 3px;
+        }
+        
+        .timeline-content .description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .timeline-content .key-features {
+            padding-left: 0;
+            list-style-type: none;
+        }
+        
+        .timeline-content .key-features li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .timeline-content .key-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%233498db"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        .timeline-icon {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            left: 50%;
+            margin-left: -35px;
+            top: 16px;
+            text-align: center;
+            box-shadow: 0 0 0 5px #3498db, 0 0 0 10px rgba(52, 152, 219, 0.2), 0 0 20px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 5px #3498db, 0 0 0 15px rgba(52, 152, 219, 0.3), 0 0 25px rgba(0,0,0,0.3);
+        }
+        
+        .timeline-icon svg {
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-icon:hover svg {
+            transform: rotate(360deg);
+        }
+        
+        .timeline-item:nth-child(1) .timeline-icon,
+        .timeline-item:nth-child(1) .timeline-content {
+            border-color: #3498db;
+        }
+        
+        .timeline-item:nth-child(2) .timeline-icon,
+        .timeline-item:nth-child(2) .timeline-content {
+            border-color: #9b59b6;
+        }
+        
+        .timeline-item:nth-child(3) .timeline-icon,
+        .timeline-item:nth-child(3) .timeline-content {
+            border-color: #e67e22;
+        }
+        
+        .timeline-item:nth-child(4) .timeline-icon,
+        .timeline-item:nth-child(4) .timeline-content {
+            border-color: #27ae60;
+        }
+        
+        .timeline-item:nth-child(5) .timeline-icon,
+        .timeline-item:nth-child(5) .timeline-content {
+            border-color: #e74c3c;
+        }
+        
+        .timeline-item:nth-child(6) .timeline-icon,
+        .timeline-item:nth-child(6) .timeline-content {
+            border-color: #f1c40f;
+        }
+        
+        .clearfix:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(to right, #2c3e50, #4a5f72);
+            color: white;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+        }
+        
+        .footer p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        @media screen and (max-width: 992px) {
+            .header-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 40px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                float: right;
+                width: calc(100% - 100px);
+                margin-left: 100px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -30px;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                left: auto;
+                right: auto;
+                top: -60px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .timeline-icon {
+                left: 40px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            
+            .header-section p {
+                font-size: 1rem;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+            }
+            
+            .timeline-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .timeline-content .description {
+                font-size: 0.9rem;
+            }
+            
+            .timeline-content .key-features li {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <section class="header-section">
+            <div class="header-content">
+                <h1>乾坤网络(QiankunNet)系列</h1>
+                <p>基于人工智能的量子化学计算方法创新历程 (2023-2025)</p>
+            </div>
+            <!-- 粒子背景会通过JavaScript动态生成 -->
+        </section>
+        
+        <div class="timeline-container">
+            <div class="intro-text">
+                <p>乾坤网络(QiankunNet)系列方法代表了量子化学和人工智能交叉领域的重大突破。通过将深度学习的表达能力与量子力学的基本原理相结合，这一系列前沿方法为复杂量子系统的精确模拟提供了革命性的解决方案，从小分子计算到复杂周期性材料，开创了计算化学的新纪元。</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- QiankunNet -->
+                <div class="timeline-item clearfix">
+                    <div class="timeline-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3L20 7.5V16.5L12 21L4 16.5V7.5L12 3Z" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 12L20 7.5" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 12V21" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 12L4 7.5" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023年</span>
+                        <h2>QiankunNet</h2>
+                        <p class="description">首次将Transformer架构引入到量子化学计算中，开创了神经网络量子态表征的新方法。通过专门设计的注意力机制捕捉量子系统中的复杂电子相互作用。</p>
+                        <ul class="key-features">
+                            <li>专门的注意力机制捕捉电子间长程关联效应</li>
+                            <li>引入物理守恒定律作为硬约束确保量子力学有效性</li>
+                            <li>在小分子体系基态能量计算中达到前所未有的精度</li>
+                            <li>在处理强关联体系时显著优于传统量子化学方法</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- QiankunNet-High Performance -->
+                <div class="timeline-item clearfix">
+                    <div class="timeline-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="4" width="6" height="6" rx="1" stroke="#9b59b6" stroke-width="2"></rect>
+                            <rect x="14" y="4" width="6" height="6" rx="1" stroke="#9b59b6" stroke-width="2"></rect>
+                            <rect x="4" y="14" width="6" height="6" rx="1" stroke="#9b59b6" stroke-width="2"></rect>
+                            <rect x="14" y="14" width="6" height="6" rx="1" stroke="#9b59b6" stroke-width="2"></rect>
+                            <path d="M10 7H14" stroke="#9b59b6" stroke-width="2"></path>
+                            <path d="M7 10V14" stroke="#9b59b6" stroke-width="2"></path>
+                            <path d="M17 10V14" stroke="#9b59b6" stroke-width="2"></path>
+                            <path d="M10 17H14" stroke="#9b59b6" stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023年 SC会议</span>
+                        <h2>QiankunNet-High Performance</h2>
+                        <p class="description">面向大规模并行计算的神经网络量子态方法实现框架，专为高性能计算环境设计。解决了传统计算方法无法处理的大规模量子系统的计算瓶颈。</p>
+                        <ul class="key-features">
+                            <li>创新的分布式计算框架提升计算效率</li>
+                            <li>高效的多GPU训练策略实现大规模并行</li>
+                            <li>并行局部能量评估方案加速收敛过程</li>
+                            <li>成功扩展到120个自旋轨道的活性空间</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- QiankunNet-Solid -->
+                <div class="timeline-item clearfix">
+                    <div class="timeline-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3L17 6.5L12 10L7 6.5L12 3Z" stroke="#e67e22" stroke-width="2" stroke-linejoin="round"></path>
+                            <path d="M17 6.5V13.5L12 17L7 13.5V6.5" stroke="#e67e22" stroke-width="2" stroke-linejoin="round"></path>
+                            <path d="M17 13.5L22 17L17 20.5L12 17" stroke="#e67e22" stroke-width="2" stroke-linejoin="round"></path>
+                            <path d="M7 13.5L2 17L7 20.5L12 17" stroke="#e67e22" stroke-width="2" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024年7月</span>
+                        <h2>QiankunNet-Solid</h2>
+                        <p class="description">首次成功将神经网络量子态框架扩展到周期性体系，实现对固态材料的高精度从头算计算。填补了神经网络量子态在材料科学领域应用的空白。</p>
+                        <ul class="key-features">
+                            <li>创新性结合布洛赫定理与生成式Transformer架构</li>
+                            <li>适用于一维链状结构、二维材料和三维周期性体系</li>
+                            <li>计算精度达到化学精度水平（小于1 kcal/mol）</li>
+                            <li>成功处理多种固态材料体系的电子结构</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- QiankunNet-DMET -->
+                <div class="timeline-item clearfix">
+                    <div class="timeline-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="3" stroke="#27ae60" stroke-width="2"></circle>
+                            <path d="M12 5V3" stroke="#27ae60" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M12 21V19" stroke="#27ae60" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M16.9498 7.05026L18.364 5.63605" stroke="#27ae60" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M5.63608 18.364L7.05029 16.9497" stroke="#27ae60" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M19 12H21" stroke="#27ae60" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M3 12H5" stroke="#27ae60" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M16.9498 16.9497L18.364 18.364" stroke="#27ae60" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M5.63608 5.63605L7.05029 7.05026" stroke="#27ae60" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024年9月</span>
+                        <h2>QiankunNet-DMET</h2>
+                        <p class="description">首次将神经网络量子态与密度矩阵嵌入理论相结合，创新性地解决复杂固态材料模拟问题。通过智能分解策略大幅降低计算复杂度。</p>
+                        <ul class="key-features">
+                            <li>独特的量子嵌入框架和迁移学习策略</li>
+                            <li>智能系统分割与高效量子态表示</li>
+                            <li>精确考虑子系统与环境之间的相互作用</li>
+                            <li>成功描述过渡金属氧化物的磁性基态和1T-TiSe₂的电荷密度波态</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- QiankunNet-Force -->
+                <div class="timeline-item clearfix">
+                    <div class="timeline-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M15 16L19 12L15 8" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <circle cx="5" cy="12" r="3" stroke="#e74c3c" stroke-width="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024年10月</span>
+                        <h2>QiankunNet-Force</h2>
+                        <p class="description">首次将变分量子蒙特卡罗与Transformer深度神经网络相结合，实现对分子体系原子间力的精确计算，为分子动力学模拟提供精确基础。</p>
+                        <ul class="key-features">
+                            <li>直接应用Hellmann-Feynman定理进行力的计算</li>
+                            <li>无需引入Pulay修正项，简化计算过程并提高效率</li>
+                            <li>在多个代表性分子体系中展现优于传统方法的精度</li>
+                            <li>准确描述乙烯分子扭转过程中的波函数本质特征</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- QiankunNet-DMRG -->
+                <div class="timeline-item clearfix">
+                    <div class="timeline-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="6" width="18" height="12" rx="2" stroke="#f1c40f" stroke-width="2"></rect>
+                            <path d="M7 10L10 12L7 14V10Z" stroke="#f1c40f" stroke-width="2" stroke-linejoin="round"></path>
+                            <line x1="13" y1="10" x2="17" y2="10" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"></line>
+                            <line x1="13" y1="14" x2="17" y2="14" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"></line>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2025年2月</span>
+                        <h2>QiankunNet-DMRG</h2>
+                        <p class="description">实现了神经网络量子态与密度矩阵重正化群算法的创新性结合，为处理强关联体系提供高效精确的计算工具，开创算法融合新范式。</p>
+                        <ul class="key-features">
+                            <li>深度学习辅助的张量网络优化策略提升收敛效率</li>
+                            <li>混合表示方案自动识别和保留关键量子态信息</li>
+                            <li>结合DMRG处理强关联体系的高效性与稳定性</li>
+                            <li>充分发挥QiankunNet在捕捉电子关联方面的表达优势</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2025 乾坤网络(QiankunNet)研究团队 | 推动量子化学与人工智能的融合前沿</p>
+        </footer>
+    </div>
+
+    <script>
+        // 创建粒子背景
+        function createParticles() {
+            const headerSection = document.querySelector('.header-section');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // 随机位置
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // 随机大小
+                const size = Math.random() * 5 + 2;
+                
+                // 随机透明度
+                const opacity = Math.random() * 0.5 + 0.1;
+                
+                // 应用样式
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.opacity = opacity;
+                
+                // 添加动画
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                
+                particle.style.animation = `float ${duration}s ${delay}s infinite ease-in-out`;
+                
+                // 添加到DOM
+                headerSection.appendChild(particle);
+            }
+        }
+        
+        // 检测元素是否在视口中
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+        
+        // 为在视口中的元素添加动画类
+        function handleScroll() {
+            const timelineContents = document.querySelectorAll('.timeline-content');
+            
+            timelineContents.forEach(content => {
+                if (isElementInViewport(content) && !content.classList.contains('animate')) {
+                    content.classList.add('animate');
+                }
+            });
+        }
+        
+        // 添加元素的浮动动画
+        document.head.insertAdjacentHTML('beforeend', `
+            <style>
+                @keyframes float {
+                    0%, 100% {
+                        transform: translateY(0) translateX(0);
+                    }
+                    25% {
+                        transform: translateY(-20px) translateX(10px);
+                    }
+                    50% {
+                        transform: translateY(0) translateX(20px);
+                    }
+                    75% {
+                        transform: translateY(20px) translateX(10px);
+                    }
+                }
+            </style>
+        `);
+        
+        // 页面加载后执行
+        window.addEventListener('load', () => {
+            createParticles();
+            
+            // 初始检查一次
+            handleScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
+
+
+</body></html>
