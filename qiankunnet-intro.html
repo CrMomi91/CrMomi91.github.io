@@ -1,0 +1,1329 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QiankunNet科普报告</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100%;
+            background: #f5f5f5;
+        }
+        .slide-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: none;
+            background: linear-gradient(135deg, #f0f6ff 0%, #e7f0fd 100%);
+            color: #333;
+        }
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .slide-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            color: #2c3e50;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+            color: #34495e;
+        }
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.5;
+            margin-bottom: 0.8em;
+            text-align: left;
+        }
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .column {
+            flex: 1;
+            padding: 0 15px;
+        }
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+        }
+        button {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .math {
+            font-style: italic;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .center {
+            text-align: center;
+        }
+        .image-container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .diagram {
+            width: 100%;
+            height: 300px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .quantum-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wave {
+            position: relative;
+            width: 100%;
+            height: 100px;
+        }
+        .transformer-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .transformer-box {
+            width: 120px;
+            height: 80px;
+            background: #3498db;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+        .arrow {
+            width: 50px;
+            height: 20px;
+            position: relative;
+        }
+        .arrow:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #333;
+            transform: translateY(-50%);
+        }
+        .arrow:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #333;
+            border-right: 2px solid #333;
+            transform: translateY(-50%) rotate(45deg);
+        }
+        .qiankunnet-architecture {
+            width: 80%;
+            margin: 0 auto;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .reference {
+            font-size: 0.9em;
+            text-align: left;
+            margin-top: 1em;
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: #777;
+        }
+        .canvas-container {
+            width: 100%;
+            height: 200px;
+            margin: 20px auto;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            p, li {
+                font-size: 1em;
+            }
+            .two-column {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- 第1页：标题页 -->
+        <div class="slide active" id="slide1">
+            <div class="slide-content">
+                <h1>QiankunNet：借鉴NLP思想解决量子多体问题</h1>
+                <h2>从量子力学的概率波到变换器神经网络</h2>
+                <div class="canvas-container">
+                    <canvas id="quantumCanvas" width="800" height="200"></canvas>
+                </div>
+                <p class="center">一种创新的量子多体问题求解方法</p>
+            </div>
+            <div class="slide-number">1/15</div>
+        </div>
+
+        <!-- 第2页：量子力学的基本概念 -->
+        <div class="slide" id="slide2">
+            <div class="slide-content">
+                <h2>量子力学的基本概念</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <p>• <strong>波函数</strong>：描述量子系统的数学表达式</p>
+                        <p>• 波函数的平方（<span class="math">|Ψ(x)|²</span>）表示在空间中找到粒子的概率密度</p>
+                        <p>• 量子态的<span class="highlight">叠加性</span>使其具有丰富的信息容量</p>
+                        <p>• 波函数由振幅（大小）和相位（角度）两部分组成</p>
+                    </div>
+                    <div class="column">
+                        <div class="diagram">
+                            <canvas id="waveFunctionCanvas" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">2/15</div>
+        </div>
+
+        <!-- 第3页：量子多体问题的挑战 -->
+        <div class="slide" id="slide3">
+            <div class="slide-content">
+                <h2>量子多体问题的挑战</h2>
+                <p>• 计算复杂度：N个量子比特需要<span class="math">2<sup>N</sup></span>维希尔伯特空间</p>
+                <p>• 例如：50个量子比特系统需要2<sup>50</sup> ≈ 10<sup>15</sup>个复数来描述</p>
+                <p>• 随着粒子数量的增加，计算资源需求呈<span class="highlight">指数级增长</span></p>
+                <p>• 传统方法难以处理大规模量子系统：</p>
+                <ul>
+                    <li>精确对角化 - 仅适用于小系统</li>
+                    <li>密度矩阵重整化群 - 受限于一维系统</li>
+                    <li>量子蒙特卡罗方法 - 面临"符号问题"</li>
+                </ul>
+                <p>• 需要全新的计算方法来突破这一瓶颈</p>
+            </div>
+            <div class="slide-number">3/15</div>
+        </div>
+
+        <!-- 第4页：从自然语言处理获得灵感 -->
+        <div class="slide" id="slide4">
+            <div class="slide-content">
+                <h2>从自然语言处理获得灵感</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <p>• NLP面临的相似挑战：词汇量为30522，最大句长512的语言模型面临<span class="math">30522<sup>512</sup></span>的状态空间</p>
+                        <p>• 这一数字远超大多数可数值求解的量子多体问题</p>
+                        <p>• 语言模型如何成功？</p>
+                        <ul>
+                            <li>通过学习语法规则来约束可能的句子模式</li>
+                            <li>利用自回归预测机制：根据已有文本预测下一个词</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <div class="diagram">
+                            <canvas id="nlpQuantumCanvas" width="400" height="300"></canvas>
+                        </div>
+                        <p class="center">GPT等大型语言模型的成功<br>为量子多体问题提供新思路</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">4/15</div>
+        </div>
+
+        <!-- 第5页：量子态与语言模型的相似之处 -->
+        <div class="slide" id="slide5">
+            <div class="slide-content">
+                <h2>量子态与语言模型的相似之处</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <p><strong>自回归性质的比较：</strong></p>
+                        <p>• <strong>语言模型</strong>：预测下一个词基于前面所有的词</p>
+                        <p>• <strong>量子系统</strong>：测量一个量子比特的结果依赖于之前测量的所有量子比特结果</p>
+                        <p>• 两者都可以表示为条件概率分布：</p>
+                        <p class="center"><span class="math">P(x₁,x₂,...,xₙ) = P(x₁)·P(x₂|x₁)·...·P(xₙ|x₁,x₂,...,xₙ₋₁)</span></p>
+                    </div>
+                    <div class="column">
+                        <div class="diagram">
+                            <canvas id="autoregressiveCanvas" width="400" height="300"></canvas>
+                        </div>
+                        <p>两种问题的共同数学本质使得我们可以借鉴语言模型的架构来解决量子问题</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">5/15</div>
+        </div>
+
+        <!-- 第6页：变换器(Transformer)架构的优势 -->
+        <div class="slide" id="slide6">
+            <div class="slide-content">
+                <h2>变换器(Transformer)架构的优势</h2>
+                <p>• 传统神经网络处理远距离关联的挑战：</p>
+                <ul>
+                    <li>CNN：捕捉距离为d的关联需要O(d)层网络</li>
+                    <li>RNN：难以并行，容易出现梯度消失问题</li>
+                </ul>
+                <p>• <span class="highlight">Transformer架构的关键优势</span>：</p>
+                <ul>
+                    <li>自注意力机制可以直接捕捉任意远距离的关联</li>
+                    <li>计算复杂度恒定O(1)，而非线性增长</li>
+                    <li>高度的并行化能力，计算效率更高</li>
+                </ul>
+                <div class="transformer-diagram">
+                    <div class="transformer-box">输入</div>
+                    <div class="arrow"></div>
+                    <div class="transformer-box">自注意力</div>
+                    <div class="arrow"></div>
+                    <div class="transformer-box">前馈网络</div>
+                    <div class="arrow"></div>
+                    <div class="transformer-box">输出</div>
+                </div>
+                <p>• 这些特性使Transformer非常适合处理量子多体问题中的量子关联</p>
+            </div>
+            <div class="slide-number">6/15</div>
+        </div>
+
+        <!-- 第7页：QiankunNet的核心思想 -->
+        <div class="slide" id="slide7">
+            <div class="slide-content">
+                <h2>QiankunNet的核心思想</h2>
+                <p>• 波函数的数学分解：</p>
+                <p class="center"><span class="math">Ψ(x) = |Ψ(x)| e<sup>iφ(x)</sup></span></p>
+                <div class="two-column">
+                    <div class="column">
+                        <p><strong>振幅部分 |Ψ(x)|</strong></p>
+                        <ul>
+                            <li>决定概率分布 |Ψ(x)|²</li>
+                            <li>使用<span class="highlight">Transformer</span>网络表示</li>
+                            <li>能够有效捕捉长距离量子关联</li>
+                            <li>允许自回归采样</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <p><strong>相位部分 φ(x)</strong></p>
+                        <ul>
+                            <li>决定量子态的干涉特性</li>
+                            <li>使用<span class="highlight">MLP</span>(多层感知机)表示</li>
+                            <li>相位通常具有更简单的结构</li>
+                            <li>计算效率更高</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>• 这种分解使得模型既保留了量子态的全部信息，又兼顾了计算效率</p>
+            </div>
+            <div class="slide-number">7/15</div>
+        </div>
+
+        <!-- 第8页：QiankunNet的架构设计 -->
+        <div class="slide" id="slide8">
+            <div class="slide-content">
+                <h2>QiankunNet的架构设计</h2>
+                <div class="qiankunnet-architecture">
+                    <canvas id="architectureCanvas" width="700" height="300"></canvas>
+                </div>
+                <p>• <strong>关键特点：</strong></p>
+                <ul>
+                    <li>仅使用解码器(Decoder)层，因为这是一个无监督学习问题</li>
+                    <li>可通过堆叠多个Decoder层构建深度网络</li>
+                    <li>振幅部分设计为自回归模型，使采样更高效</li>
+                    <li>与传统NNQS(神经网络量子态)相比，能够更好地捕捉长程量子关联</li>
+                </ul>
+            </div>
+            <div class="slide-number">8/15</div>
+        </div>
+
+        <!-- 第9页：QiankunNet的采样效率 -->
+        <div class="slide" id="slide9">
+            <div class="slide-content">
+                <h2>QiankunNet的采样效率</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <p><strong>自回归采样算法：</strong></p>
+                        <p>• 传统Transformer计算条件概率的复杂度：O(i²)</p>
+                        <p>• 采样N_s个N比特样本的总复杂度：</p>
+                        <p class="center"><span class="math">O(N_s·N³/3)</span></p>
+                        <p>• 对于大规模采样，计算成本随样本数线性增长</p>
+                    </div>
+                    <div class="column">
+                        <p><strong>批量自回归采样(BAS)的改进：</strong></p>
+                        <p>• 每一步中，对具有相同前缀的样本批量计算</p>
+                        <p>• 如果每步有N_u,i个唯一样本，总复杂度为：</p>
+                        <p class="center"><span class="math">O(N_unique·N³/3)</span></p>
+                        <p>• <span class="highlight">关键优势</span>：计算复杂度与采样数量无关</p>
+                        <p>• 通常N_unique &lt; 10^6，即使对于N &gt; 100的分子系统</p>
+                    </div>
+                </div>
+                <canvas id="samplingCanvas" width="700" height="150"></canvas>
+            </div>
+            <div class="slide-number">9/15</div>
+        </div>
+
+        <!-- 第10页：QiankunNet的应用优势 -->
+        <div class="slide" id="slide10">
+            <div class="slide-content">
+                <h2>QiankunNet的应用优势</h2>
+                <p><strong>处理大规模量子系统的能力：</strong></p>
+                <ul>
+                    <li>可以有效处理100+量子比特的系统</li>
+                    <li>克服了传统方法的维度灾难</li>
+                    <li>能够准确表达强关联量子系统的波函数</li>
+                </ul>
+                <p><strong>计算效率的提升：</strong></p>
+                <ul>
+                    <li>自回归+批量采样极大提高采样效率</li>
+                    <li>Transformer架构能高效捕捉长程量子关联</li>
+                    <li>振幅与相位的分离简化了计算过程</li>
+                </ul>
+                <p><strong>潜在的科学突破可能性：</strong></p>
+                <ul>
+                    <li>解决以前无法处理的复杂量子问题</li>
+                    <li>为量子材料设计、量子化学和高温超导体研究提供新工具</li>
+                </ul>
+                <canvas id="applicationCanvas" width="700" height="150"></canvas>
+            </div>
+            <div class="slide-number">10/15</div>
+        </div>
+
+        <!-- 第11页：QiankunNet与量子化学 -->
+        <div class="slide" id="slide11">
+            <div class="slide-content">
+                <h2>QiankunNet与量子化学</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <p><strong>电子结构问题的新思路：</strong></p>
+                        <p>• 传统NLP问题："给定已有文本，下一个词应该是什么？"</p>
+                        <p>• 量子化学问题："给定已有量子态，下一个应该是什么来最小化系统总能量？"</p>
+                        <p>• QiankunNet提供了一种快速学习量子关联的方法</p>
+                    </div>
+                    <div class="column">
+                        <p><strong>与传统量子化学方法对比：</strong></p>
+                        <ul>
+                            <li>配置相互作用(CI)：精确但计算量巨大</li>
+                            <li>密度泛函理论(DFT)：高效但对强关联系统准确性不足</li>
+                            <li>QiankunNet：兼顾精度与效率，适用于强关联系统</li>
+                        </ul>
+                    </div>
+                </div>
+                <canvas id="chemistryCanvas" width="700" height="200"></canvas>
+            </div>
+            <div class="slide-number">11/15</div>
+        </div>
+
+        <!-- 第12页：未来展望 -->
+        <div class="slide" id="slide12">
+            <div class="slide-content">
+                <h2>未来展望</h2>
+                <p><strong>QiankunNet的改进方向：</strong></p>
+                <ul>
+                    <li>架构优化：更高效的注意力机制，适应特定量子系统的特点</li>
+                    <li>扩展性：处理更大规模的量子系统（1000+量子比特）</li>
+                    <li>训练方法：更高效的能量梯度估计算法</li>
+                </ul>
+                <p><strong>与量子计算的结合可能：</strong></p>
+                <ul>
+                    <li>混合量子-经典算法：利用量子硬件加速特定计算步骤</li>
+                    <li>量子机器学习：结合量子计算优势的神经网络训练</li>
+                </ul>
+                <p><strong>解决更复杂量子系统的前景：</strong></p>
+                <ul>
+                    <li>高温超导体的微观机制探索</li>
+                    <li>新型量子材料的设计与预测</li>
+                    <li>复杂分子系统的量子动力学模拟</li>
+                </ul>
+            </div>
+            <div class="slide-number">12/15</div>
+        </div>
+
+        <!-- 第13页：总结 -->
+        <div class="slide" id="slide13">
+            <div class="slide-content">
+                <h2>总结</h2>
+                <p><strong>QiankunNet核心创新点：</strong></p>
+                <ul>
+                    <li>将NLP领域的Transformer架构引入量子多体问题求解</li>
+                    <li>波函数的振幅-相位分解，分别使用Transformer和MLP表示</li>
+                    <li>高效的批量自回归采样算法，大幅提升计算效率</li>
+                </ul>
+                <p><strong>跨学科借鉴的重要性：</strong></p>
+                <ul>
+                    <li>量子物理与机器学习的结合开辟新研究范式</li>
+                    <li>不同领域共通的数学结构可以激发创新解决方案</li>
+                </ul>
+                <p><strong>量子多体问题研究的新范式：</strong></p>
+                <ul>
+                    <li>从"第一性原理"计算到"数据驱动+物理约束"的范式转变</li>
+                    <li>为理解复杂量子系统提供新的理论与计算工具</li>
+                </ul>
+                <p class="center"><span class="highlight">QiankunNet展示了跨领域思想碰撞带来的科学突破可能性</span></p>
+            </div>
+            <div class="slide-number">13/15</div>
+        </div>
+
+        <!-- 第14页：参考文献 -->
+        <div class="slide" id="slide14">
+            <div class="slide-content">
+                <h2>参考文献</h2>
+                <p class="reference">1. Devlin, J., Chang, M. W., Lee, K., &amp; Toutanova, K. (2018). BERT: Pre-training of deep bidirectional transformers for language understanding. arXiv preprint arXiv:1810.04805.</p>
+                <p class="reference">2. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... &amp; Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems, 30.</p>
+                <p class="reference">3. Radford, A., Narasimhan, K., Salimans, T., &amp; Sutskever, I. (2018). Improving language understanding by generative pre-training.</p>
+                <p class="reference">4. Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., &amp; Sutskever, I. (2019). Language models are unsupervised multitask learners. OpenAI blog, 1(8), 9.</p>
+                <p class="reference">5. Barrett, T. D., Malyshev, A., &amp; Lvovsky, A. I. (2022). Autoregressive neural-network wavefunctions for ab initio quantum chemistry. Nature Machine Intelligence, 4(4), 351-358.</p>
+                <p class="reference">6. Zhao, T., Carleo, G., Stokes, J., &amp; Veerapaneni, S. (2022). Natural evolution strategies and variational Monte Carlo. Machine Learning: Science and Technology, 3(1), 015013.</p>
+                <p class="reference">7. Kremer, J., &amp; Stensmo, E. (2001). Towards large neural networks for multidimensional sequence processing: A case study in speech recognition. In Advances in Neural Information Processing Systems (pp. 429-435).</p>
+            </div>
+            <div class="slide-number">14/15</div>
+        </div>
+
+        <!-- 第15页：感谢页 -->
+        <div class="slide" id="slide15">
+            <div class="slide-content">
+                <h1>感谢聆听</h1>
+                <h2>QiankunNet: 借鉴NLP思想解决量子多体问题</h2>
+                <p class="center">量子波函数的Transformer表示方法</p>
+                <div class="canvas-container">
+                    <canvas id="thanksCanvas" width="800" height="200"></canvas>
+                </div>
+                <p class="center">欢迎提问</p>
+            </div>
+            <div class="slide-number">15/15</div>
+        </div>
+
+        <div class="controls">
+            <button id="prevBtn">上一页</button>
+            <button id="nextBtn">下一页</button>
+        </div>
+    </div>
+
+    <script>
+        // 控制幻灯片切换
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide++;
+                slides[currentSlide].classList.add('active');
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentSlide > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide--;
+                slides[currentSlide].classList.add('active');
+            }
+        });
+
+        // 键盘控制
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                document.getElementById('nextBtn').click();
+            } else if (e.key === 'ArrowLeft') {
+                document.getElementById('prevBtn').click();
+            }
+        });
+
+        // 量子波函数动画
+        function drawQuantumWave() {
+            const canvas = document.getElementById('quantumCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            const time = Date.now() / 1000;
+            
+            // 绘制量子波函数
+            ctx.beginPath();
+            ctx.moveTo(0, height / 2);
+            
+            for (let x = 0; x < width; x++) {
+                const y = Math.sin(x * 0.02 + time) * 30 + 
+                          Math.sin(x * 0.03 - time * 1.5) * 20 + 
+                          height / 2;
+                ctx.lineTo(x, y);
+            }
+            
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            // 绘制概率分布（波函数平方）
+            ctx.beginPath();
+            ctx.moveTo(0, height - 20);
+            
+            for (let x = 0; x < width; x++) {
+                const wave1 = Math.sin(x * 0.02 + time);
+                const wave2 = Math.sin(x * 0.03 - time * 1.5);
+                const amplitude = wave1 + wave2 * 0.7;
+                const probability = Math.pow(amplitude, 2) * 15;
+                ctx.lineTo(x, height - 20 - probability);
+            }
+            
+            ctx.strokeStyle = '#e74c3c';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 添加标签
+            ctx.fillStyle = '#3498db';
+            ctx.font = '16px Arial';
+            ctx.fillText('波函数 Ψ(x)', 20, 30);
+            
+            ctx.fillStyle = '#e74c3c';
+            ctx.fillText('概率密度 |Ψ(x)|²', 20, height - 40);
+            
+            requestAnimationFrame(drawQuantumWave);
+        }
+
+        // 绘制波函数图表
+        function drawWaveFunction() {
+            const canvas = document.getElementById('waveFunctionCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            const time = Date.now() / 2000;
+            const centerY = height / 2;
+            
+            // 绘制坐标轴
+            ctx.beginPath();
+            ctx.moveTo(0, centerY);
+            ctx.lineTo(width, centerY);
+            ctx.moveTo(width/2, 0);
+            ctx.lineTo(width/2, height);
+            ctx.strokeStyle = '#aaa';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            
+            // 绘制波函数
+            ctx.beginPath();
+            
+            for (let x = 0; x < width; x++) {
+                const normalizedX = (x - width/2) / 50;
+                const gaussian = Math.exp(-normalizedX * normalizedX / 2);
+                const oscillation = Math.cos(normalizedX * 5 + time);
+                const y = gaussian * oscillation * 80 + centerY;
+                
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 绘制概率分布
+            ctx.beginPath();
+            
+            for (let x = 0; x < width; x++) {
+                const normalizedX = (x - width/2) / 50;
+                const gaussian = Math.exp(-normalizedX * normalizedX / 2);
+                const oscillation = Math.cos(normalizedX * 5 + time);
+                const probability = Math.pow(gaussian * oscillation, 2);
+                const y = height - 50 - probability * 80;
+                
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            ctx.strokeStyle = '#e74c3c';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 添加标签
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('实空间', width - 60, centerY - 10);
+            ctx.fillText('波函数 Ψ(x)', 20, 30);
+            ctx.fillText('概率密度 |Ψ(x)|²', 20, height - 70);
+            
+            requestAnimationFrame(drawWaveFunction);
+        }
+
+        // NLP与量子比较图
+        function drawNLPQuantumComparison() {
+            const canvas = document.getElementById('nlpQuantumCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            // 绘制NLP部分
+            ctx.fillStyle = '#3498db';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('NLP状态空间', 50, 30);
+            
+            ctx.font = '14px Arial';
+            ctx.fillText('词汇量: 30522', 50, 60);
+            ctx.fillText('最大长度: 512', 50, 80);
+            ctx.fillText('状态空间: 30522^512', 50, 100);
+            
+            // 绘制量子部分
+            ctx.fillStyle = '#e74c3c';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('量子状态空间', width - 200, 30);
+            
+            ctx.font = '14px Arial';
+            ctx.fillText('N个量子比特', width - 200, 60);
+            ctx.fillText('状态空间: 2^N', width - 200, 80);
+            ctx.fillText('例如: 50量子比特 → 2^50', width - 200, 100);
+            
+            // 绘制对比图
+            const centerX = width / 2;
+            const startY = 150;
+            
+            // 连接线
+            ctx.beginPath();
+            ctx.moveTo(100, startY);
+            ctx.lineTo(width - 100, startY);
+            ctx.strokeStyle = '#555';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // NLP模型
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(100, startY - 40, 80, 80);
+            ctx.fillStyle = 'white';
+            ctx.fillText('NLP', 125, startY + 5);
+            
+            // 量子模型
+            ctx.fillStyle = '#e74c3c';
+            ctx.fillRect(width - 180, startY - 40, 80, 80);
+            ctx.fillStyle = 'white';
+            ctx.fillText('量子', width - 155, startY + 5);
+            
+            // 中间连接
+            ctx.fillStyle = '#2ecc71';
+            ctx.beginPath();
+            ctx.arc(centerX, startY, 40, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = 'white';
+            ctx.fillText('共同', centerX - 20, startY);
+            ctx.fillText('挑战', centerX - 20, startY + 20);
+            
+            // 箭头
+            drawArrow(ctx, 190, startY, centerX - 50, startY);
+            drawArrow(ctx, centerX + 50, startY, width - 190, startY);
+            
+            // 底部文字
+            ctx.fillStyle = '#333';
+            ctx.fillText('指数级状态空间 → 相似的数学结构 → 相似的计算挑战', centerX - 180, startY + 80);
+        }
+
+        function drawArrow(ctx, fromX, fromY, toX, toY) {
+            const headlen = 10;
+            const angle = Math.atan2(toY - fromY, toX - fromX);
+            
+            ctx.beginPath();
+            ctx.moveTo(fromX, fromY);
+            ctx.lineTo(toX, toY);
+            ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+            ctx.moveTo(toX, toY);
+            ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+            ctx.strokeStyle = '#555';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        // 自回归模型图
+        function drawAutoregressive() {
+            const canvas = document.getElementById('autoregressiveCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            // 左侧：语言模型
+            ctx.fillStyle = '#3498db';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('语言模型自回归性', 50, 30);
+            
+            const words = ['The', 'quick', 'brown', 'fox', '?'];
+            let xPos = 50;
+            
+            for (let i = 0; i < words.length; i++) {
+                ctx.fillStyle = i < words.length - 1 ? '#3498db' : '#e74c3c';
+                ctx.fillRect(xPos, 50, 60, 30);
+                ctx.fillStyle = 'white';
+                ctx.fillText(words[i], xPos + 10, 70);
+                
+                if (i < words.length - 1) {
+                    drawArrow(ctx, xPos + 70, 65, xPos + 90, 65);
+                }
+                
+                xPos += 100;
+            }
+            
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('预测下一个词基于前面所有词', 50, 110);
+            
+            // 右侧：量子模型
+            ctx.fillStyle = '#e74c3c';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('量子态测量的自回归性', width - 250, 30);
+            
+            const qubits = ['|0⟩', '|1⟩', '|0⟩', '|1⟩', '|?⟩'];
+            xPos = width - 350;
+            
+            for (let i = 0; i < qubits.length; i++) {
+                ctx.fillStyle = i < qubits.length - 1 ? '#e74c3c' : '#3498db';
+                ctx.beginPath();
+                ctx.arc(xPos + 15, 65, 15, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.fillText(qubits[i], xPos + 5, 70);
+                
+                if (i < qubits.length - 1) {
+                    drawArrow(ctx, xPos + 35, 65, xPos + 55, 65);
+                }
+                
+                xPos += 60;
+            }
+            
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('测量下一个量子比特依赖于之前的结果', width - 350, 110);
+            
+            // 中心连接
+            ctx.strokeStyle = '#2ecc71';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(width/2, 130);
+            ctx.lineTo(width/2, 180);
+            ctx.stroke();
+            
+            // 底部文字
+            ctx.fillStyle = '#2ecc71';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('共同的数学形式：条件概率分布', width/2 - 150, 200);
+            ctx.font = '14px Arial';
+            ctx.fillText('P(x₁,x₂,...,xₙ) = P(x₁)·P(x₂|x₁)·...·P(xₙ|x₁,x₂,...,xₙ₋₁)', width/2 - 180, 230);
+        }
+
+        // 架构图
+        function drawArchitecture() {
+            const canvas = document.getElementById('architectureCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            // 标题
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 18px Arial';
+            ctx.fillText('QiankunNet架构设计', width/2 - 100, 30);
+            
+            // 输入比特串
+            ctx.fillStyle = '#555';
+            ctx.font = '16px Arial';
+            ctx.fillText('输入比特串 x = (x₁, x₂, ..., xₙ)', width/2 - 120, 60);
+            
+            // 下箭头
+            drawArrow(ctx, width/2, 70, width/2, 90);
+            
+            // 分支
+            ctx.beginPath();
+            ctx.moveTo(width/2, 90);
+            ctx.lineTo(width/2, 110);
+            ctx.lineTo(width/4, 110);
+            ctx.moveTo(width/2, 110);
+            ctx.lineTo(3*width/4, 110);
+            ctx.strokeStyle = '#555';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 左侧：振幅部分
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(width/4 - 80, 120, 160, 50);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('Transformer', width/4 - 40, 150);
+            
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('振幅部分 |Ψ(x)|', width/4 - 50, 190);
+            
+            // 右侧：相位部分
+            ctx.fillStyle = '#e74c3c';
+            ctx.fillRect(3*width/4 - 80, 120, 160, 50);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('MLP', 3*width/4 - 20, 150);
+            
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('相位部分 φ(x)', 3*width/4 - 50, 190);
+            
+            // 下箭头
+            drawArrow(ctx, width/4, 200, width/4, 220);
+            drawArrow(ctx, 3*width/4, 200, 3*width/4, 220);
+            
+            // 输出
+            ctx.fillStyle = '#2ecc71';
+            ctx.fillRect(width/4 - 80, 230, 160, 40);
+            ctx.fillStyle = 'white';
+            ctx.fillText('概率 |Ψ(x)|²', width/4 - 40, 255);
+            
+            ctx.fillStyle = '#9b59b6';
+            ctx.fillRect(3*width/4 - 80, 230, 160, 40);
+            ctx.fillStyle = 'white';
+            ctx.fillText('相位 e^(iφ(x))', 3*width/4 - 40, 255);
+            
+            // 合并
+            ctx.beginPath();
+            ctx.moveTo(width/4, 280);
+            ctx.lineTo(width/4, 300);
+            ctx.lineTo(width/2, 300);
+            ctx.moveTo(3*width/4, 280);
+            ctx.lineTo(3*width/4, 300);
+            ctx.lineTo(width/2, 300);
+            ctx.strokeStyle = '#555';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 最终输出
+            drawArrow(ctx, width/2, 300, width/2, 320);
+            ctx.fillStyle = '#555';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('波函数 Ψ(x) = |Ψ(x)| e^(iφ(x))', width/2 - 120, 340);
+        }
+
+        // 采样效率图
+        function drawSampling() {
+            const canvas = document.getElementById('samplingCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            // 标题
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('传统采样 vs 批量自回归采样(BAS)', width/2 - 120, 20);
+            
+            // 传统采样
+            ctx.fillStyle = '#3498db';
+            const sampleCount = 10;
+            const sampleWidth = 20;
+            const sampleGap = 5;
+            const sampleTop = 50;
+            
+            for (let i = 0; i < sampleCount; i++) {
+                const height = (i % 3 + 1) * 10 + 20;
+                ctx.fillRect(50 + i * (sampleWidth + sampleGap), sampleTop, sampleWidth, height);
+            }
+            
+            ctx.fillStyle = '#333';
+            ctx.fillText('传统采样: 每个样本独立计算', 50, sampleTop + 70);
+            ctx.fillText('计算复杂度: O(N_s·N³/3)', 50, sampleTop + 90);
+            
+            // BAS采样
+            ctx.fillStyle = '#e74c3c';
+            const basTop = 50;
+            const basLeft = width/2 + 50;
+            
+            // 第一层：共同前缀
+            ctx.fillRect(basLeft, basTop, sampleWidth, 30);
+            
+            // 第二层：分支
+            ctx.fillRect(basLeft - 30, basTop + 40, sampleWidth, 30);
+            ctx.fillRect(basLeft + 30, basTop + 40, sampleWidth, 30);
+            
+            // 连接线
+            ctx.beginPath();
+            ctx.moveTo(basLeft + sampleWidth/2, basTop + 30);
+            ctx.lineTo(basLeft + sampleWidth/2, basTop + 35);
+            ctx.lineTo(basLeft - 30 + sampleWidth/2, basTop + 35);
+            ctx.moveTo(basLeft + sampleWidth/2, basTop + 35);
+            ctx.lineTo(basLeft + 30 + sampleWidth/2, basTop + 35);
+            ctx.lineTo(basLeft + 30 + sampleWidth/2, basTop + 40);
+            ctx.moveTo(basLeft - 30 + sampleWidth/2, basTop + 35);
+            ctx.lineTo(basLeft - 30 + sampleWidth/2, basTop + 40);
+            ctx.strokeStyle = '#e74c3c';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            ctx.fillStyle = '#333';
+            ctx.fillText('批量自回归采样: 共享计算', basLeft - 60, basTop + 70);
+            ctx.fillText('计算复杂度: O(N_unique·N³/3)', basLeft - 60, basTop + 90);
+            ctx.fillText('与样本数无关!', basLeft, basTop + 110);
+        }
+
+        // 应用图
+        function drawApplications() {
+            const canvas = document.getElementById('applicationCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            // 绘制分子结构
+            function drawMolecule(x, y, scale) {
+                ctx.beginPath();
+                // 碳原子
+                ctx.arc(x, y, 10 * scale, 0, Math.PI * 2);
+                ctx.fillStyle = '#333';
+                ctx.fill();
+                
+                // 氧原子
+                ctx.beginPath();
+                ctx.arc(x + 40 * scale, y, 12 * scale, 0, Math.PI * 2);
+                ctx.fillStyle = '#e74c3c';
+                ctx.fill();
+                
+                // 氢原子
+                ctx.beginPath();
+                ctx.arc(x - 30 * scale, y - 20 * scale, 8 * scale, 0, Math.PI * 2);
+                ctx.fillStyle = '#3498db';
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(x - 30 * scale, y + 20 * scale, 8 * scale, 0, Math.PI * 2);
+                ctx.fillStyle = '#3498db';
+                ctx.fill();
+                
+                // 连接线
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + 40 * scale, y);
+                ctx.moveTo(x, y);
+                ctx.lineTo(x - 30 * scale, y - 20 * scale);
+                ctx.moveTo(x, y);
+                ctx.lineTo(x - 30 * scale, y + 20 * scale);
+                ctx.strokeStyle = '#555';
+                ctx.lineWidth = 2 * scale;
+                ctx.stroke();
+            }
+            
+            // 绘制晶格结构
+            function drawLattice(x, y, scale) {
+                const spacing = 25 * scale;
+                const radius = 6 * scale;
+                
+                for (let i = 0; i < 4; i++) {
+                    for (let j = 0; j < 4; j++) {
+                        ctx.beginPath();
+                        ctx.arc(x + i * spacing, y + j * spacing, radius, 0, Math.PI * 2);
+                        ctx.fillStyle = (i + j) % 2 === 0 ? '#3498db' : '#e74c3c';
+                        ctx.fill();
+                        
+                        if (i < 3) {
+                            ctx.beginPath();
+                            ctx.moveTo(x + i * spacing + radius, y + j * spacing);
+                            ctx.lineTo(x + (i + 1) * spacing - radius, y + j * spacing);
+                            ctx.strokeStyle = '#555';
+                            ctx.lineWidth = 2 * scale;
+                            ctx.stroke();
+                        }
+                        
+                        if (j < 3) {
+                            ctx.beginPath();
+                            ctx.moveTo(x + i * spacing, y + j * spacing + radius);
+                            ctx.lineTo(x + i * spacing, y + (j + 1) * spacing - radius);
+                            ctx.strokeStyle = '#555';
+                            ctx.lineWidth = 2 * scale;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            
+            // 绘制量子计算机
+            function drawQuantumComputer(x, y, scale) {
+                // 底座
+                ctx.fillStyle = '#34495e';
+                ctx.fillRect(x - 30 * scale, y + 20 * scale, 60 * scale, 15 * scale);
+                
+                // 量子芯片
+                ctx.fillStyle = '#9b59b6';
+                ctx.fillRect(x - 25 * scale, y - 10 * scale, 50 * scale, 30 * scale);
+                
+                // 量子比特
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        ctx.beginPath();
+                        ctx.arc(x - 15 * scale + i * 15 * scale, y - 5 * scale + j * 10 * scale, 3 * scale, 0, Math.PI * 2);
+                        ctx.fillStyle = '#f1c40f';
+                        ctx.fill();
+                    }
+                }
+                
+                // 连接线
+                ctx.beginPath();
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (i < 2) {
+                            ctx.moveTo(x - 15 * scale + i * 15 * scale + 3 * scale, y - 5 * scale + j * 10 * scale);
+                            ctx.lineTo(x - 15 * scale + (i + 1) * 15 * scale - 3 * scale, y - 5 * scale + j * 10 * scale);
+                        }
+                        if (j < 2) {
+                            ctx.moveTo(x - 15 * scale + i * 15 * scale, y - 5 * scale + j * 10 * scale + 3 * scale);
+                            ctx.lineTo(x - 15 * scale + i * 15 * scale, y - 5 * scale + (j + 1) * 10 * scale - 3 * scale);
+                        }
+                    }
+                }
+                ctx.strokeStyle = '#f1c40f';
+                ctx.lineWidth = scale;
+                ctx.stroke();
+            }
+            
+            // 绘制应用图标
+            drawMolecule(150, 75, 1);
+            drawLattice(350, 45, 1);
+            drawQuantumComputer(550, 75, 1);
+            
+            // 添加标签
+            ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.fillText('量子化学', 120, 130);
+            ctx.fillText('量子材料', 330, 130);
+            ctx.fillText('量子计算', 520, 130);
+        }
+
+        // 量子化学图
+        function drawChemistry() {
+            const canvas = document.getElementById('chemistryCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            const centerX = width / 2;
+            const centerY = height / 2;
+            
+            // 绘制分子轨道
+            const time = Date.now() / 2000;
+            
+            // 1s轨道
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(52, 152, 219, 0.3)';
+            ctx.fill();
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 2s轨道
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 60, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(231, 76, 60, 0.2)';
+            ctx.fill();
+            ctx.strokeStyle = '#e74c3c';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 2p轨道
+            ctx.beginPath();
+            ctx.ellipse(centerX, centerY, 90, 45, time % (Math.PI * 2), 0, Math.PI * 2);
+            ctx.strokeStyle = '#2ecc71';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 原子核
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#34495e';
+            ctx.fill();
+            
+            // 电子
+            const electronRadius = 5;
+            
+            // 1s电子
+            const angle1s = time * 2;
+            const x1s = centerX + Math.cos(angle1s) * 30;
+            const y1s = centerY + Math.sin(angle1s) * 30;
+            
+            ctx.beginPath();
+            ctx.arc(x1s, y1s, electronRadius, 0, Math.PI * 2);
+            ctx.fillStyle = '#3498db';
+            ctx.fill();
+            
+            // 2s电子
+            const angle2s = time * 1.5 + Math.PI;
+            const x2s = centerX + Math.cos(angle2s) * 60;
+            const y2s = centerY + Math.sin(angle2s) * 60;
+            
+            ctx.beginPath();
+            ctx.arc(x2s, y2s, electronRadius, 0, Math.PI * 2);
+            ctx.fillStyle = '#e74c3c';
+            ctx.fill();
+            
+            // 2p电子
+            const angle2p = time;
+            const x2p = centerX + Math.cos(angle2p) * 90;
+            const y2p = centerY + Math.sin(angle2p) * 45;
+            
+            ctx.beginPath();
+            ctx.arc(x2p, y2p, electronRadius, 0, Math.PI * 2);
+            ctx.fillStyle = '#2ecc71';
+            ctx.fill();
+            
+            // 文字说明
+            ctx.fillStyle = '#333';
+            ctx.font = '16px Arial';
+            ctx.fillText('量子化学：电子结构问题', 20, 30);
+            
+            ctx.font = '14px Arial';
+            ctx.fillText('NLP: "预测下一个词"', 20, 180);
+            ctx.fillText('量子化学: "预测下一个量子态以最小化系统能量"', 300, 180);
+            
+            requestAnimationFrame(drawChemistry);
+        }
+
+        // 感谢页动画
+        function drawThanks() {
+            const canvas = document.getElementById('thanksCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            const time = Date.now() / 1000;
+            
+            // 绘制量子态波动
+            for (let i = 0; i < 5; i++) {
+                ctx.beginPath();
+                
+                for (let x = 0; x < width; x++) {
+                    const frequency = 0.02 + i * 0.01;
+                    const amplitude = 20 - i * 3;
+                    const phase = time * (1 + i * 0.2);
+                    const y = Math.sin(x * frequency + phase) * amplitude + height / 2;
+                    
+                    if (x === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                
+                ctx.strokeStyle = `hsla(${210 + i * 30}, 70%, 50%, ${0.7 - i * 0.1})`;
+                ctx.lineWidth = 3 - i * 0.4;
+                ctx.stroke();
+            }
+            
+            // 文字效果
+            ctx.fillStyle = 'rgba(52, 73, 94, 0.8)';
+            ctx.font = 'bold 24px Arial';
+            
+            const message = "QiankunNet: 跨领域创新的典范";
+            const letterSpacing = 20;
+            const totalWidth = message.length * letterSpacing;
+            const startX = (width - totalWidth) / 2;
+            
+            for (let i = 0; i < message.length; i++) {
+                const x = startX + i * letterSpacing;
+                const yOffset = Math.sin(time * 2 + i * 0.3) * 5;
+                ctx.fillText(message[i], x, height / 2 + 50 + yOffset);
+            }
+            
+            requestAnimationFrame(drawThanks);
+        }
+
+        // 启动所有动画
+        function startAnimations() {
+            drawQuantumWave();
+            drawWaveFunction();
+            drawNLPQuantumComparison();
+            drawAutoregressive();
+            drawArchitecture();
+            drawSampling();
+            drawApplications();
+            drawChemistry();
+            drawThanks();
+        }
+
+        // 页面加载完成后启动动画
+        window.addEventListener('load', startAnimations);
+    </script>
+
+
+</body></html>
