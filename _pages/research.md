@@ -11,11 +11,19 @@ In our group,  we develop the physical algorithm and numerical methods for the s
 
 We have proposed a computational framework for density functional perturbation theory with all-electron, full-potential accuracy. Pioneered the development and implementation of computational methods simultaneously adaptable to molecules and solids, as well as to external perturbations such as atomic displacements and electric fields. Achieved billion-core scalable all-electron, full-potential first-principles calculations on China's exascale heterogeneous many-core supercomputers.
 
-Shang#* et al, Comput. Phys. Commun. 215，26 (2017)  
-Shang#  et al, New J. Phys. 20, 073040(2018)  
-Shang#* et al, SC21 (Gordon Bell Prize Finalist)  
-Shang#* et al, Comput. Phys. Commun. 258,107613, (2021) 
-Shang*  et al, SC23
+[1]Shang, H.*, Carbogno, C., Rinke, P. & Scheffler, M. Lattice dynamics calculations based on density-functional perturbation theory in real space. Comput. Phys. Commun. 215, 26–46 (2017). https://doi.org/10.1016/j.cpc.2017.01.017
+
+[2]Shang, H., Raimbault, N., Rinke, P., Scheffler, M., Rossi, M. & Carbogno, C. All-electron, real-space perturbation theory for homogeneous electric fields: theory, implementation, and application within DFT. New J. Phys. 20, 073040 (2018). https://doi.org/10.1088/1367-2630/aace6d
+
+[3]Shang, H., Argondizzo, A., Tan, S., Zhao, J., Rinke, P., Carbogno, C., Scheffler, M. & Petek, H. Electron-phonon coupling in d-electron solids: A temperature-dependent study of rutile TiO2 by first-principles theory and two-photon photoemission. Phys. Rev. Research 1, 033153 (2019). https://doi.org/10.1103/PhysRevResearch.1.033153
+
+[4]Shang, H., Duan, X., Li, F., Zhang, L., Xu, Z., Liu, K., Luo, H., Ji, Y., Zhao, W., Xue, W., Chen, L. & Zhang, Y. Many-core acceleration of the first-principles all-electron quantum perturbation calculations. Comput. Phys. Commun. 267, 108045 (2021). https://doi.org/10.1016/j.cpc.2021.108045
+
+[5]Shang, H., Li, F., Zhang, Y., Zhang, L., Fu, Y., Gao, Y., Wu, Y., Duan, X., Lin, R., Liu, X., Liu, Y. & Chen, D. Extreme-scale ab initio quantum raman spectra simulations on the leadership HPC system in China. In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC '21) 1–13 (Association for Computing Machinery, New York, 2021). https://doi.org/10.1145/3458817.3476145  (Gordon Bell Prize Finalist)
+
+[6]Wu, Z., Wu, Y., Liu, Y.,* Shang, H.*, Gao, Y., Zhang, Z., Zhang, Y., Long, Y., Feng, X. & Cui, H. Portable and scalable all-electron quantum perturbation simulations on exascale supercomputers. In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC '23) (Association for Computing Machinery, New York, 2023). https://doi.org/10.1145/3581784.3607054
+
+[7]Shang, H.,* Liu, Y*., Wu, Z., Chen, Z., Liu, J., Shao, M., Li, Y., Kan, B., Cui, H., Feng, X., Zhang, Y., Truhlar, D. G., An, H., He, X.* & Yang, J.* Pushing the limit of quantum mechanical simulation to the raman spectra of a biological system with 100 million atoms. In Proceedings of the International Conference for High Performance Computing, Networking, Storage, and Analysis (SC '24) (IEEE Press, 2024). https://doi.org/10.1109/SC54273.2024.00097 (Gordon Bell Prize Finalist))
 
 <!--
 ## 2. High performance quantum computing emulation for quantum chemistry
@@ -34,9 +42,17 @@ The fundamental many-electron Schrodinger equation is solved straightforwardly w
 fermionic ansatz methods. QiankunNet showcases the power of the Transformer-based language model in achieving
 unprecedented efficiency in quantum chemistry calculations, opening up new avenues for chemical discovery and demonstrating the potential to solve the large-scale Schrodinger equation with modest computational cost.
 
-Shang# et al, https://arxiv.org/abs/2307.09343  
-Shang* et al, SC’23   https://dl.acm.org/doi/10.1145/3581784.3607061  
-Shang* et al, J. Chem. Theory Comput. 20, 14, 6218(2024）
+[1] Shang, H., Guo, C., Wu, Y., Li, Z. & Yang, J. Solving Schrödinger Equation with a Language Model. Preprint at https://arxiv.org/abs/2307.09343 (2023).
+
+[2] Wu, Y., Guo, C.,* Fan, Y., Zhou, P. & Shang, H.* NNQS-Transformer: An efficient and scalable neural network quantum states approach for ab initio quantum chemistry. In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC '23) (Association for Computing Machinery, New York, 2023). https://dl.acm.org/doi/10.1145/3581784.3607053
+
+[3] Fu, L., Wu, Y., Shang, H.* & Yang, J.* Transformer-Based Neural-Network Quantum State Method for Electronic Band Structures of Real Solids. J. Chem. Theory Comput. 20, 6218–6226 (2024). https://doi.org/10.1021/acs.jctc.4c00257
+
+[4] Ma, H., Shang, H.* & Yang, J.* Quantum embedding method with transformer neural network quantum states for strongly correlated materials. npj Comput. Mater. 10, 220 (2024). https://doi.org/10.1038/s41524-024-01231-8
+
+[5] Lai, J., Kan, B., Wu, Y., Fu, Q.,* Shang, H.,* Li, Z. & Yang, J*. Accurate Calculation of Interatomic Forces with Neural Networks Based on a Generative Transformer Architecture. J. Chem. Theory Comput. 20, 9478–9487 (2024). https://doi.org/10.1021/acs.jctc.4c00756
+
+[6] Kan, B., Tian, Y., Wu, Y., Zhang, Y. & Shang, H.* Bridging the Gap between Transformer-Based Neural Networks and Tensor Networks for Quantum Chemistry. J. Chem. Theory Comput. (2025). https://doi.org/10.1021/acs.jctc.4c01703
 
 
 
