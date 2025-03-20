@@ -15,5 +15,8 @@ main:
   - title: "QiankunNet"
     url: /qiankunnet/
 
-  - title: "QiankunNet-introduction"
-    url: /qiankunnet-intro/
+  - title: "QiankunNet科普1"
+    url: /qiankunnet1/
+
+  - title: "QiankunNet科普2"
+    url: /qiankunnet2/
