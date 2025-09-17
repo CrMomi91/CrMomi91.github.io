@@ -10,7 +10,7 @@
   teaser: "提出基于实空间的全电子 DFPT 声子/振动框架，统一分子与固体的处理。"
   links:
     doi: "https://doi.org/10.1016/j.cpc.2017.01.017"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: dfpt-electricfield-njp-2018
   year: 2018
@@ -21,7 +21,7 @@
   teaser: "全电子、实空间微扰理论推广至均匀电场并完成实现与应用。"
   links:
     doi: "https://doi.org/10.1088/1367-2630/aace6d"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: eph-tio2-prresearch-2019
   year: 2019
@@ -32,7 +32,7 @@
   teaser: "金红石 TiO₂ 中的电子-声子耦合：温度依赖的第一性原理与实验结合研究。"
   links:
     doi: "https://doi.org/10.1103/PhysRevResearch.1.033153"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: dfpt-manycore-cpc-2021
   year: 2021
@@ -43,7 +43,7 @@
   teaser: "在多核/众核体系上加速全电子量子微扰计算的并行实现与优化。"
   links:
     doi: "https://doi.org/10.1016/j.cpc.2021.108045"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: raman-extremescale-sc21
   year: 2021
@@ -54,7 +54,7 @@
   teaser: "在中国领先 HPC 体系上进行极大规模从头算拉曼谱模拟。"
   links:
     doi: "https://doi.org/10.1145/3458817.3476145"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: dfpt-exascale-sc23
   year: 2023
@@ -65,7 +65,7 @@
   teaser: "面向超算的全电子量子微扰模拟：可移植、可扩展的极致并行。"
   links:
     doi: "https://doi.org/10.1145/3581784.3607054"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: raman-100m-sc24
   year: 2024
@@ -76,7 +76,7 @@
   teaser: "把量子力学模拟推进至含一亿原子的生物体系拉曼谱极限规模。"
   links:
     doi: "https://doi.org/10.1109/SC54273.2024.00097"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 # --- Section 2: QiankunNet / NNQS ---
 - key: qiankunnet-arxiv-2023
@@ -88,7 +88,7 @@
   teaser: "基于生成式 Transformer 的 NNQS 框架，配合批式自回归采样，显著提升分子计算的精度与效率。"
   links:
     arxiv: "https://arxiv.org/abs/2307.09343"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: nnqs-transformer-sc23
   year: 2023
@@ -99,7 +99,7 @@
   teaser: "面向 HPC 的 NNQS-Transformer：高效并行与可扩展的第一性原理量子化学方案。"
   links:
     doi: "https://dl.acm.org/doi/10.1145/3581784.3607053"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: qiankunnet-solid-jctc-2024
   year: 2024
@@ -110,7 +110,7 @@
   teaser: "将 QiankunNet 推广到真实固体的能带与态密度计算，处理周期性边界条件。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c00257"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: dmet-qiankunnet-npjcm-2024
   year: 2024
@@ -121,7 +121,7 @@
   teaser: "把 QiankunNet 作为 DMET 求解器，面向强关联材料并结合转移学习策略。"
   links:
     doi: "https://doi.org/10.1038/s41524-024-01231-8"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: qiankunnet-force-jctc-2024
   year: 2024
@@ -132,7 +132,7 @@
   teaser: "在生成式 Transformer 框架下精确计算分子间原子力，遵循 Hellmann-Feynman 思路。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c00756"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
 
 - key: bridge-tns-jctc-2025
   year: 2025
@@ -143,4 +143,4 @@
   teaser: "将张量网络（DMRG/TNS）与 Transformer-NNQS 建立桥接，用于预训练/精调以强化大活性空间体系精度与收敛。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c01703"
-  image: "/assets/research/test.png"
+  image: "/assets/research/test.jpg"
