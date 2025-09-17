@@ -1,89 +1,151 @@
 ---
-layout: default
+layout: none
 title: Research Papers
 permalink: /research_papers/
 ---
 
 <style>
   :root{
-    --bg1:#0f1226; --bg2:#1a2040; --acc:#7aa2ff; --ink:#e9eefc;
-    --chip:#2b2f55; --card:#171a33; --muted:#b7c1ea; --ring:#3b82f6;
+    --bg1:#0e1024; --bg2:#181d3b; --ink:#e9eefc; --muted:#b7c1ea;
+    --rail:#30365f; --card:#151834; --line:#2a2e51; --ring:#5f7cff;
   }
-  .hero{padding:64px 16px;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--ink);text-align:center;border-radius:20px;margin:24px 0}
-  .hero h1{font-size:clamp(28px,4vw,44px);margin:0 0 8px}
-  .hero p{color:var(--muted);margin:0}
-  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:18px 0}
-  .chip{padding:8px 12px;border-radius:999px;background:var(--chip);color:var(--ink);cursor:pointer;user-select:none}
-  .chip.active{outline:2px solid var(--ring)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-  .card{background:var(--card);border:1px solid #2a2e51;border-radius:16px;overflow:hidden;color:var(--ink)}
-  .thumb{aspect-ratio:16/9;background:#0b0d1c;display:block;width:100%;height:auto}
-  .meta{padding:14px 16px 0;color:var(--muted);font-size:14px}
-  .title{padding:4px 16px 0;font-size:18px;font-weight:700;line-height:1.35}
-  .teaser{padding:8px 16px 0;color:#d7defa;font-size:14px}
-  .btns{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px 16px}
-  .btn{padding:8px 10px;border-radius:10px;background:#11142a;border:1px solid #2e335f;color:var(--ink);font-size:14px;text-decoration:none}
-  .year{margin:28px 0 8px;color:#9fb1ff;border-left:3px solid var(--ring);padding-left:10px;font-weight:700}
+  /* 页面整体背景延续深色渐变，但主要内容放在有左右留白的容器中 */
+  .page-bg{
+    background: linear-gradient(135deg,var(--bg1),var(--bg2));
+    padding: 24px 0 64px; /* 顶部和底部留白 */
+  }
+  .wrap{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(16px,4vw,32px); /* 关键：左右不顶格 */
+  }
+  /* 顶部横幅，和原页风格一致 */
+  .hero{
+    color: var(--ink);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: clamp(24px,4vw,48px);
+    box-shadow: 0 8px 30px rgba(0,0,0,.25);
+    text-align: center;
+  }
+  .hero h1{ margin:0 0 8px; font-size: clamp(28px,4vw,44px); }
+  .hero p{ margin:0; color: var(--muted); }
+
+  /* 标签筛选：胶囊按钮，延续原有配色 */
+  .toolbar{
+    display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center;
+    margin: 18px 0 0;
+  }
+  .chip{
+    padding:8px 12px; border-radius:999px; color:var(--ink);
+    background:#23264a; border:1px solid var(--line); cursor:pointer; user-select:none;
+  }
+  .chip.active{ outline:2px solid var(--ring); }
+
+  /* 时间线容器与竖直导轨 */
+  .timeline{ position: relative; margin: 28px 0 0; }
+  .timeline::before{
+    content:""; position:absolute; left: 34px; top:0; bottom:0; width:2px; background: var(--rail);
+  }
+
+  /* 年份分组标题 */
+  .year{
+    color:#9fb1ff; font-weight:700; margin: 28px 0 12px;
+    padding-left: 64px; /* 与时间线对齐 */
+  }
+
+  /* 每条目：圆点 + 卡片（模仿你原卡片的圆角、描边与阴影） */
+  .entry{ position: relative; margin: 16px 0 24px 0; padding-left: 64px; }
+  .entry::before{
+    content:""; position:absolute; left: 26px; top: 24px; width:18px; height:18px;
+    border-radius:50%; background: var(--ring); box-shadow: 0 0 0 4px rgba(95,124,255,.18);
+  }
+  .card{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden; color: var(--ink);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+  .thumb{ display:block; width:100%; height:auto; aspect-ratio: 16/9; background:#0b0d1c; }
+  .meta{ padding: 12px 16px 0; color: var(--muted); font-size: 14px; }
+  .title{ padding: 4px 16px 0; font-size: 18px; font-weight:700; line-height:1.35; }
+  .teaser{ padding: 8px 16px 0; color:#d7defa; font-size:14px; }
+  .btns{ display:flex; flex-wrap:wrap; gap:8px; padding: 12px 16px 16px; }
+  .btn{ padding:8px 10px; border-radius:10px; background:#11142a; border:1px solid #2e335f; color:var(--ink); font-size:14px; text-decoration:none; }
+
+  /* 小屏优化：容器保留左右 padding，不会贴边 */
+  @media (max-width: 520px){
+    .timeline::before{ left: 22px; }
+    .entry{ padding-left: 56px; }
+    .entry::before{ left: 14px; }
+  }
 </style>
 
-<section class="hero">
-  <h1>Research</h1>
-  <p>Transformer-based NNQS · Molecules & Solids · DMET · VQE · HPC</p>
+<div class="page-bg">
+  <div class="wrap">
+    <section class="hero">
+      <h1>Research</h1>
+      <p>Transformer-based NNQS · Molecules & Solids · DMET · VQE · HPC</p>
 
-  <!-- tags: 用 concat/uniq/sort 收集（Jekyll 3.10 支持），不要用 push -->
-  <div class="toolbar" id="tags">
-    <span class="chip active" data-tag="all">All</span>
-    {% assign _tags = "" | split: "" %}
-    {% for p in site.data.research_papers %}
-      {% if p.tags %}
-        {% assign _tags = _tags | concat: p.tags %}
-      {% endif %}
-    {% endfor %}
-    {% assign tagset = _tags | uniq | sort %}
-    {% for t in tagset %}
-      <span class="chip" data-tag="{{ t }}">{{ t }}</span>
-    {% endfor %}
-  </div>
-</section>
+      <!-- 标签汇总：Jekyll 3.10 兼容写法 -->
+      <div class="toolbar" id="tags">
+        <span class="chip active" data-tag="all">All</span>
+        {% assign _tags = "" | split: "" %}
+        {% for p in site.data.research_papers %}
+          {% if p.tags %}{% assign _tags = _tags | concat: p.tags %}{% endif %}
+        {% endfor %}
+        {% assign tagset = _tags | uniq | sort %}
+        {% for t in tagset %}
+          <span class="chip" data-tag="{{ t }}">{{ t }}</span>
+        {% endfor %}
+      </div>
+    </section>
 
-<!-- 年份分组：用 group_by（Jekyll 3.10 支持），不要用 group_by_exp -->
-{% assign groups = site.data.research_papers | group_by: "year" | sort: "name" | reverse %}
-{% for g in groups %}
-  <h2 class="year">{{ g.name }}</h2>
-  <div class="grid" data-year="{{ g.name }}">
-    {% assign sorted = g.items | sort: "month" | reverse %}
-    {% for p in sorted %}
-      <article class="card" data-tags="{% if p.tags %}{{ p.tags | join: ',' }}{% endif %}">
-        {% if p.image %}
-          <img class="thumb" src="{{ p.image }}" alt="teaser for {{ p.title }}">
-        {% else %}
-          <div class="thumb" aria-hidden="true"></div>
-        {% endif %}
-        <div class="meta">{{ p.venue }}</div>
-        <h3 class="title">{{ p.title }}</h3>
-        <div class="meta">{{ p.authors }}</div>
-        {% if p.teaser %}<p class="teaser">{{ p.teaser }}</p>{% endif %}
-        <div class="btns">
-          {% if p.links.arxiv %}<a class="btn" href="{{ p.links.arxiv }}">arXiv</a>{% endif %}
-          {% if p.links.doi %}<a class="btn" href="{{ p.links.doi }}">DOI</a>{% endif %}
-          {% if p.links.pdf %}<a class="btn" href="{{ p.links.pdf }}">PDF</a>{% endif %}
-          {% if p.links.nature %}<a class="btn" href="{{ p.links.nature }}">Nature npj</a>{% endif %}
-          {% if p.links.pubmed %}<a class="btn" href="{{ p.links.pubmed }}">PubMed</a>{% endif %}
-        </div>
-      </article>
-    {% endfor %}
+    <!-- 年份分组：Jekyll 3.10 用 group_by -->
+    {% assign groups = site.data.research_papers | group_by: "year" | sort: "name" | reverse %}
+    <section class="timeline">
+      {% for g in groups %}
+        <h2 class="year">{{ g.name }}</h2>
+        {% assign sorted = g.items | sort: "month" | reverse %}
+        {% for p in sorted %}
+          <article class="entry" data-tags="{% if p.tags %}{{ p.tags | join: ',' }}{% endif %}">
+            <div class="card">
+              {% if p.image %}
+                <img class="thumb" src="{{ p.image }}" alt="teaser for {{ p.title }}">
+              {% else %}
+                <div class="thumb" aria-hidden="true"></div>
+              {% endif %}
+              <div class="meta">{{ p.venue }}</div>
+              <h3 class="title">{{ p.title }}</h3>
+              <div class="meta">{{ p.authors }}</div>
+              {% if p.teaser %}<p class="teaser">{{ p.teaser }}</p>{% endif %}
+              <div class="btns">
+                {% if p.links.arxiv %}<a class="btn" href="{{ p.links.arxiv }}">arXiv</a>{% endif %}
+                {% if p.links.doi %}<a class="btn" href="{{ p.links.doi }}">DOI</a>{% endif %}
+                {% if p.links.pdf %}<a class="btn" href="{{ p.links.pdf }}">PDF</a>{% endif %}
+                {% if p.links.nature %}<a class="btn" href="{{ p.links.nature }}">Nature npj</a>{% endif %}
+                {% if p.links.pubmed %}<a class="btn" href="{{ p.links.pubmed }}">PubMed</a>{% endif %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      {% endfor %}
+    </section>
   </div>
-{% endfor %}
+</div>
 
 <script>
+  // 标签筛选（兼容时间线布局）
   const chips=[...document.querySelectorAll('.chip')];
-  const cards=[...document.querySelectorAll('.card')];
+  const entries=[...document.querySelectorAll('.entry')];
   chips.forEach(c=>c.addEventListener('click',()=>{
     chips.forEach(x=>x.classList.remove('active')); c.classList.add('active');
     const tag=c.dataset.tag;
-    cards.forEach(card=>{
-      const tags=(card.dataset.tags||"").split(',').filter(Boolean);
-      card.style.display=(tag==='all'||tags.includes(tag))?'block':'none';
+    entries.forEach(it=>{
+      const tags=(it.dataset.tags||"").split(',').filter(Boolean);
+      it.style.display=(tag==='all'||tags.includes(tag))?'block':'none';
     });
   }));
 </script>
