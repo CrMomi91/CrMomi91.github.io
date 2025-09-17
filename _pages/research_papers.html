@@ -1,32 +1,31 @@
 ---
 layout: none
-title: Research Papers
+title: "Research Papers"
 permalink: /research_papers/
 ---
-
 <style>
   :root{
-    --bg1:#0e1024; --bg2:#181d3b; --ink:#e9eefc; --muted:#b7c1ea;
-    --rail:#30365f; --card:#151834; --line:#2a2e51; --ring:#5f7cff;
+    --bg:#f5f7fa; --ink:#002035; --muted:#7f8c8d; --grad1:#3498db; --grad2:#9b59b6;
+    --card:#ffffff; --line:#2a2e51; --ring:#5f7cff;
   }
-  /* 页面整体背景延续深色渐变，但主要内容放在有左右留白的容器中 */
-  .page-bg{
-    background: linear-gradient(135deg,var(--bg1),var(--bg2));
-    padding: 24px 0 64px; /* 顶部和底部留白 */
+  html, body { height: 100%; }
+  body{
+    margin: 0; /* 干掉默认8px白边 */
+    background: var(--bg);
   }
   .wrap{
+    padding: 24px 0 64px; /* 顶部和底部留白 */
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 clamp(16px,4vw,32px); /* 关键：左右不顶格 */
+    /* padding: 0 clamp(16px,4vw,32px); */
   }
-  /* 顶部横幅，和原页风格一致 */
+  /* 顶部横幅 */
   .hero{
-    color: var(--ink);
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--line);
+    color: var(--grad1);
+    background: var(--card);
     border-radius: 20px;
     padding: clamp(24px,4vw,48px);
-    box-shadow: 0 8px 30px rgba(0,0,0,.25);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     text-align: center;
   }
   .hero h1{ margin:0 0 8px; font-size: clamp(28px,4vw,44px); }
@@ -39,14 +38,14 @@ permalink: /research_papers/
   }
   .chip{
     padding:8px 12px; border-radius:999px; color:var(--ink);
-    background:#23264a; border:1px solid var(--line); cursor:pointer; user-select:none;
+    background:var(--bg); cursor:pointer; user-select:none;
   }
   .chip.active{ outline:2px solid var(--ring); }
 
   /* 时间线容器与竖直导轨 */
   .timeline{ position: relative; margin: 28px 0 0; }
   .timeline::before{
-    content:""; position:absolute; left: 34px; top:0; bottom:0; width:2px; background: var(--rail);
+    content:""; position:absolute; left: 34px; top:0; bottom:0; width:2px; background: linear-gradient(to bottom, var(--grad1), var(--grad2));
   }
 
   /* 年份分组标题 */
@@ -63,10 +62,9 @@ permalink: /research_papers/
   }
   .card{
     background: var(--card);
-    border: 1px solid var(--line);
     border-radius: 16px;
     overflow: hidden; color: var(--ink);
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
   .thumb{ display:block; width:100%; height:auto; aspect-ratio: 16/9; background:#0b0d1c; }
   .meta{ padding: 12px 16px 0; color: var(--muted); font-size: 14px; }
@@ -83,13 +81,12 @@ permalink: /research_papers/
   }
 </style>
 
-<div class="page-bg">
+<body>
   <div class="wrap">
     <section class="hero">
-      <h1>Research</h1>
+      <h1>QiankunNet Research Papers</h1>
       <p>Transformer-based NNQS · Molecules & Solids · DMET · VQE · HPC</p>
 
-      <!-- 标签汇总：Jekyll 3.10 兼容写法 -->
       <div class="toolbar" id="tags">
         <span class="chip active" data-tag="all">All</span>
         {% assign _tags = "" | split: "" %}
@@ -103,7 +100,6 @@ permalink: /research_papers/
       </div>
     </section>
 
-    <!-- 年份分组：Jekyll 3.10 用 group_by -->
     {% assign groups = site.data.research_papers | group_by: "year" | sort: "name" | reverse %}
     <section class="timeline">
       {% for g in groups %}
@@ -134,7 +130,7 @@ permalink: /research_papers/
       {% endfor %}
     </section>
   </div>
-</div>
+</body>
 
 <script>
   // 标签筛选（兼容时间线布局）
