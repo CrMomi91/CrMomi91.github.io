@@ -3,8 +3,8 @@ main:
   - title: "Research"
     url: /research/
 
-  - title: "Research Papers"
-    url: /research_papers/
+  - title: "QiankunNet Research"
+    url: /qiankunnet_research/
 
   - title: "Publications"
     url: /publications/

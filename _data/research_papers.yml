@@ -1,146 +1,73 @@
 # _data/research_papers.yml
 
-# --- Section 1: All-electron DFPT / HPC ---
-- key: dfpt-realspace-cpc-2017
-  year: 2017
-  title: "Lattice dynamics calculations based on density-functional perturbation theory in real space"
-  authors: "H. Shang*, C. Carbogno, P. Rinke, M. Scheffler"
-  venue: "Comput. Phys. Commun. 215, 26–46 (2017)"
-  tags: ["DFPT","AllElectron","RealSpace","LatticeDynamics"]
-  teaser: "提出基于实空间的全电子 DFPT 声子/振动框架，统一分子与固体的处理。"
-  links:
-    doi: "https://doi.org/10.1016/j.cpc.2017.01.017"
-  image: "/assets/research/test.jpg"
-
-- key: dfpt-electricfield-njp-2018
-  year: 2018
-  title: "All-electron, real-space perturbation theory for homogeneous electric fields: theory, implementation, and application within DFT"
-  authors: "H. Shang, N. Raimbault, P. Rinke, M. Scheffler, M. Rossi, C. Carbogno"
-  venue: "New J. Phys. 20, 073040 (2018)"
-  tags: ["DFPT","AllElectron","RealSpace","ElectricField"]
-  teaser: "全电子、实空间微扰理论推广至均匀电场并完成实现与应用。"
-  links:
-    doi: "https://doi.org/10.1088/1367-2630/aace6d"
-  image: "/assets/research/test.jpg"
-
-- key: eph-tio2-prresearch-2019
-  year: 2019
-  title: "Electron-phonon coupling in d-electron solids: A temperature-dependent study of rutile TiO2"
-  authors: "H. Shang, A. Argondizzo, S. Tan, J. Zhao, P. Rinke, C. Carbogno, M. Scheffler, H. Petek"
-  venue: "Phys. Rev. Research 1, 033153 (2019)"
-  tags: ["ElectronPhonon","TiO2","Temperature"]
-  teaser: "金红石 TiO₂ 中的电子-声子耦合：温度依赖的第一性原理与实验结合研究。"
-  links:
-    doi: "https://doi.org/10.1103/PhysRevResearch.1.033153"
-  image: "/assets/research/test.jpg"
-
-- key: dfpt-manycore-cpc-2021
-  year: 2021
-  title: "Many-core acceleration of the first-principles all-electron quantum perturbation calculations"
-  authors: "H. Shang, X. Duan, F. Li, L. Zhang, Z. Xu, K. Liu, H. Luo, Y. Ji, W. Zhao, W. Xue, L. Chen, Y. Zhang"
-  venue: "Comput. Phys. Commun. 267, 108045 (2021)"
-  tags: ["HPC","AllElectron","DFPT","ManyCore"]
-  teaser: "在多核/众核体系上加速全电子量子微扰计算的并行实现与优化。"
-  links:
-    doi: "https://doi.org/10.1016/j.cpc.2021.108045"
-  image: "/assets/research/test.jpg"
-
-- key: raman-extremescale-sc21
-  year: 2021
-  title: "Extreme-scale ab initio quantum raman spectra simulations on the leadership HPC system in China"
-  authors: "H. Shang, F. Li, Y. Zhang, L. Zhang, Y. Fu, Y. Gao, Y. Wu, X. Duan, R. Lin, X. Liu, Y. Liu, D. Chen"
-  venue: "SC '21 (ACM, 2021) — Gordon Bell Prize Finalist"
-  tags: ["HPC","ExtremeScale","Raman"]
-  teaser: "在中国领先 HPC 体系上进行极大规模从头算拉曼谱模拟。"
-  links:
-    doi: "https://doi.org/10.1145/3458817.3476145"
-  image: "/assets/research/test.jpg"
-
-- key: dfpt-exascale-sc23
+- key: qiankunnet-2307
   year: 2023
-  title: "Portable and scalable all-electron quantum perturbation simulations on exascale supercomputers"
-  authors: "Z. Wu, Y. Wu, Y. Liu*, H. Shang*, Y. Gao, Z. Zhang, Y. Zhang, Y. Long, X. Feng, H. Cui"
-  venue: "SC '23 (ACM, 2023)"
-  tags: ["HPC","Exascale","AllElectron","DFPT"]
-  teaser: "面向超算的全电子量子微扰模拟：可移植、可扩展的极致并行。"
-  links:
-    doi: "https://doi.org/10.1145/3581784.3607054"
-  image: "/assets/research/test.jpg"
-
-- key: raman-100m-sc24
-  year: 2024
-  title: "Pushing the limit of quantum mechanical simulation to the Raman spectra of a biological system with 100 million atoms"
-  authors: "H. Shang*, Y. Liu*, Z. Wu, Z. Chen, J. Liu, M. Shao, Y. Li, B. Kan, H. Cui, X. Feng, Y. Zhang, D. G. Truhlar, H. An, X. He*, J. Yang*"
-  venue: "SC '24 (IEEE, 2024) — Gordon Bell Prize Finalist"
-  tags: ["HPC","ExtremeScale","Raman","100MAtoms"]
-  teaser: "把量子力学模拟推进至含一亿原子的生物体系拉曼谱极限规模。"
-  links:
-    doi: "https://doi.org/10.1109/SC54273.2024.00097"
-  image: "/assets/research/test.jpg"
-
-# --- Section 2: QiankunNet / NNQS ---
-- key: qiankunnet-arxiv-2023
-  year: 2023
+  month: 0
   title: "Solving Schrödinger Equation with a Language Model"
   authors: "H. Shang, C. Guo, Y. Wu, Z. Li, J. Yang"
-  venue: "arXiv:2307.09343 (2023)"
+  venue: "Preprint (arXiv:2307.09343, 2023)"
   tags: ["QiankunNet","NNQS","Transformer","Molecules"]
-  teaser: "基于生成式 Transformer 的 NNQS 框架，配合批式自回归采样，显著提升分子计算的精度与效率。"
+  teaser: "基于生成式 Transformer 的 NNQS 框架（QiankunNet），以语言模型形式刻画电子波函数，可在分子体系中高精度求解薛定谔方程。"
   links:
     arxiv: "https://arxiv.org/abs/2307.09343"
-  image: "/assets/research/test.jpg"
+  image: "/assets/research/qiankunnet-2307.png"
 
 - key: nnqs-transformer-sc23
   year: 2023
+  month: 0
   title: "NNQS-Transformer: An efficient and scalable neural network quantum states approach for ab initio quantum chemistry"
   authors: "Y. Wu, C. Guo*, Y. Fan, P. Zhou, H. Shang*"
   venue: "SC '23 (ACM, 2023)"
   tags: ["HPC","NNQS","Transformer","VMC"]
-  teaser: "面向 HPC 的 NNQS-Transformer：高效并行与可扩展的第一性原理量子化学方案。"
+  teaser: "面向超算的 NNQS-Transformer：高效并行的批采样与本地能评估，在第一性原理量子化学中表现出良好的弱/强扩展性。"
   links:
     doi: "https://dl.acm.org/doi/10.1145/3581784.3607053"
-  image: "/assets/research/test.jpg"
+  image: "/assets/research/nnqs-transformer-sc23.png"
 
 - key: qiankunnet-solid-jctc-2024
   year: 2024
+  month: 0
   title: "Transformer-Based Neural-Network Quantum State Method for Electronic Band Structures of Real Solids"
   authors: "L. Fu, Y. Wu, H. Shang*, J. Yang*"
   venue: "J. Chem. Theory Comput. 20, 6218–6226 (2024)"
   tags: ["QiankunNet","Solid","PBC","BandStructure"]
-  teaser: "将 QiankunNet 推广到真实固体的能带与态密度计算，处理周期性边界条件。"
+  teaser: "将 QiankunNet 推广至真实固体，处理周期性边界条件，计算能带与态密度。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c00257"
-  image: "/assets/research/test.jpg"
+  image: "/assets/research/qiankunnet-solid-jctc-2024.png"
 
 - key: dmet-qiankunnet-npjcm-2024
   year: 2024
+  month: 0
   title: "Quantum embedding method with transformer neural network quantum states for strongly correlated materials"
   authors: "H. Ma, H. Shang*, J. Yang*"
   venue: "npj Comput. Mater. 10, 220 (2024)"
   tags: ["QiankunNet","DMET","StrongCorrelation","Solid"]
-  teaser: "把 QiankunNet 作为 DMET 求解器，面向强关联材料并结合转移学习策略。"
+  teaser: "将 Transformer-NNQS 用作 DMET 求解器，面向强关联材料并结合迁移/精调策略提升精度与收敛。"
   links:
     doi: "https://doi.org/10.1038/s41524-024-01231-8"
-  image: "/assets/research/test.jpg"
+  image: "/assets/research/dmet-qiankunnet-npjcm-2024.png"
 
-- key: qiankunnet-force-jctc-2024
+- key: qiankunnet-forces-jctc-2024
   year: 2024
+  month: 0
   title: "Accurate Calculation of Interatomic Forces with Neural Networks Based on a Generative Transformer Architecture"
   authors: "J. Lai, B. Kan, Y. Wu, Q. Fu*, H. Shang*, Z. Li, J. Yang*"
   venue: "J. Chem. Theory Comput. 20, 9478–9487 (2024)"
   tags: ["QiankunNet","Forces","HellmannFeynman","Molecules"]
-  teaser: "在生成式 Transformer 框架下精确计算分子间原子力，遵循 Hellmann-Feynman 思路。"
+  teaser: "在生成式 Transformer 框架下准确计算分子间原子力，遵循/改进 Hellmann–Feynman 思路。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c00756"
-  image: "/assets/research/test.jpg"
+  image: "/assets/research/qiankunnet-forces-jctc-2024.png"
 
 - key: bridge-tns-jctc-2025
   year: 2025
+  month: 0
   title: "Bridging the Gap between Transformer-Based Neural Networks and Tensor Networks for Quantum Chemistry"
   authors: "B. Kan, Y. Tian, Y. Wu, Y. Zhang, H. Shang*"
   venue: "J. Chem. Theory Comput. (2025)"
   tags: ["TensorNetwork","DMRG","Pretraining","QiankunNet"]
-  teaser: "将张量网络（DMRG/TNS）与 Transformer-NNQS 建立桥接，用于预训练/精调以强化大活性空间体系精度与收敛。"
+  teaser: "将张量网络（DMRG/TNS）与 Transformer-NNQS 建立桥接，用于预训练与精调，增强大活性空间体系的可解性。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c01703"
-  image: "/assets/research/test.jpg"
+  image: "/assets/research/bridge-tns-jctc-2025.png"
