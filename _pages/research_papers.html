@@ -10,16 +10,14 @@ permalink: /research_papers/
   }
   html, body { height: 100%; }
   body{
-    margin: 0; /* 干掉默认8px白边 */
+    margin: 0;
     background: var(--bg);
   }
   .wrap{
-    padding: 24px 0 64px; /* 顶部和底部留白 */
+    padding: 24px 0 64px;
     max-width: 1100px;
     margin: 0 auto;
-    /* padding: 0 clamp(16px,4vw,32px); */
   }
-  /* 顶部横幅 */
   .hero{
     color: var(--grad1);
     background: var(--card);
@@ -31,30 +29,26 @@ permalink: /research_papers/
   .hero h1{ margin:0 0 8px; font-size: clamp(28px,4vw,44px); }
   .hero p{ margin:0; color: var(--muted); }
 
-  /* 标签筛选：胶囊按钮，延续原有配色 */
   .toolbar{
     display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center;
     margin: 18px 0 0;
   }
   .chip{
-    padding:8px 12px; border-radius:999px; color:var(--ink);
+    padding:8px 12px; border-radius:999px; color: var(--ink);
     background:var(--bg); cursor:pointer; user-select:none;
   }
   .chip.active{ outline:2px solid var(--ring); }
 
-  /* 时间线容器与竖直导轨 */
   .timeline{ position: relative; margin: 28px 0 0; }
   .timeline::before{
     content:""; position:absolute; left: 34px; top:0; bottom:0; width:2px; background: linear-gradient(to bottom, var(--grad1), var(--grad2));
   }
 
-  /* 年份分组标题 */
   .year{
     color:#9fb1ff; font-weight:700; margin: 28px 0 12px;
-    padding-left: 64px; /* 与时间线对齐 */
+    padding-left: 64px;
   }
 
-  /* 每条目：圆点 + 卡片（模仿你原卡片的圆角、描边与阴影） */
   .entry{ position: relative; margin: 16px 0 24px 0; padding-left: 64px; }
   .entry::before{
     content:""; position:absolute; left: 26px; top: 24px; width:18px; height:18px;
@@ -66,14 +60,13 @@ permalink: /research_papers/
     overflow: hidden; color: var(--ink);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
-  .thumb{ display:block; width:100%; height:auto; aspect-ratio: 16/9; background:#0b0d1c; }
+  .thumb{ display: block; width: 100%; height: auto; aspect-ratio: 16/9; background: var(--card); }
   .meta{ padding: 12px 16px 0; color: var(--muted); font-size: 14px; }
-  .title{ padding: 4px 16px 0; font-size: 18px; font-weight:700; line-height:1.35; }
-  .teaser{ padding: 8px 16px 0; color:#d7defa; font-size:14px; }
-  .btns{ display:flex; flex-wrap:wrap; gap:8px; padding: 12px 16px 16px; }
-  .btn{ padding:8px 10px; border-radius:10px; background:#11142a; border:1px solid #2e335f; color:var(--ink); font-size:14px; text-decoration:none; }
+  .title{ padding: 4px 16px 0; font-size: 18px; font-weight: 700; line-height: 1.35; }
+  .teaser{ padding: 8px 16px 0; color: var(--ink); font-size: 14px; }
+  .btns{ display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 16px 16px; }
+  .btn{ padding: 8px 10px; border-radius: 10px; background: var(--bg); color: var(--ink); font-size: 14px; text-decoration: none; }
 
-  /* 小屏优化：容器保留左右 padding，不会贴边 */
   @media (max-width: 520px){
     .timeline::before{ left: 22px; }
     .entry{ padding-left: 56px; }
