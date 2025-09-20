@@ -3,9 +3,6 @@ main:
   - title: "Research"
     url: /research/
 
-  - title: "QiankunNet Research"
-    url: /qiankunnet_research/
-
   - title: "Publications"
     url: /publications/
 
@@ -17,3 +14,6 @@ main:
    
   - title: "QiankunNet"
     url: /qiankunnet/
+
+  - title: "QiankunNet Research"
+    url: /qiankunnet_research/

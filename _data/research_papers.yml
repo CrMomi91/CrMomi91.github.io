@@ -10,7 +10,7 @@
   teaser: "基于生成式 Transformer 的 NNQS 框架（QiankunNet），以语言模型形式刻画电子波函数，可在分子体系中高精度求解薛定谔方程。"
   links:
     arxiv: "https://arxiv.org/abs/2307.09343"
-  image: "/assets/qiankunnet_papers/qiankunnet-2307.png"
+  image: "/assets/qiankunnet_research/qiankunnet-2307.png"
 
 - key: nnqs-transformer-sc23
   year: 2023
@@ -22,7 +22,7 @@
   teaser: "面向超算的 NNQS-Transformer：高效并行的批采样与本地能评估，在第一性原理量子化学中表现出良好的弱/强扩展性。"
   links:
     doi: "https://dl.acm.org/doi/10.1145/3581784.3607053"
-  image: "/assets/qiankunnet_papers/nnqs-transformer-sc23.png"
+  image: "/assets/qiankunnet_research/nnqs-transformer-sc23.png"
 
 - key: qiankunnet-solid-jctc-2024
   year: 2024
@@ -34,7 +34,7 @@
   teaser: "将 QiankunNet 推广至真实固体，处理周期性边界条件，计算能带与态密度。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c00257"
-  image: "/assets/qiankunnet_papers/qiankunnet-solid-jctc-2024.png"
+  image: "/assets/qiankunnet_research/qiankunnet-solid-jctc-2024.png"
 
 - key: dmet-qiankunnet-npjcm-2024
   year: 2024
@@ -46,7 +46,7 @@
   teaser: "将 Transformer-NNQS 用作 DMET 求解器，面向强关联材料并结合迁移/精调策略提升精度与收敛。"
   links:
     doi: "https://doi.org/10.1038/s41524-024-01231-8"
-  image: "/assets/qiankunnet_papers/dmet-qiankunnet-npjcm-2024.png"
+  image: "/assets/qiankunnet_research/dmet-qiankunnet-npjcm-2024.png"
 
 - key: qiankunnet-forces-jctc-2024
   year: 2024
@@ -58,7 +58,7 @@
   teaser: "在生成式 Transformer 框架下准确计算分子间原子力，遵循/改进 Hellmann–Feynman 思路。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c00756"
-  image: "/assets/qiankunnet_papers/qiankunnet-forces-jctc-2024.png"
+  image: "/assets/qiankunnet_research/qiankunnet-forces-jctc-2024.png"
 
 - key: bridge-tns-jctc-2025
   year: 2025
@@ -70,4 +70,4 @@
   teaser: "将张量网络（DMRG/TNS）与 Transformer-NNQS 建立桥接，用于预训练与精调，增强大活性空间体系的可解性。"
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c01703"
-  image: "/assets/qiankunnet_papers/bridge-tns-jctc-2025.png"
+  image: "/assets/qiankunnet_research/bridge-tns-jctc-2025.png"
