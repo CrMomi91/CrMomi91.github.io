@@ -21,7 +21,7 @@
   tags: ["HPC","NNQS","Transformer","VMC"]
   teaser: "面向超算的 NNQS-Transformer：高效并行的批采样与本地能评估，在第一性原理量子化学中表现出良好的弱/强扩展性。"
   links:
-    doi: "https://dl.acm.org/doi/10.1145/3581784.3607053"
+    doi: "https://dl.acm.org/doi/10.1145/3581784.3607061"
   image: "/assets/qiankunnet_research/nnqs-transformer-sc23.png"
 
 - key: qiankunnet-solid-jctc-2024
@@ -33,7 +33,7 @@
   tags: ["QiankunNet","Solid","PBC","BandStructure"]
   teaser: "将 QiankunNet 推广至真实固体，处理周期性边界条件，计算能带与态密度。"
   links:
-    doi: "https://doi.org/10.1021/acs.jctc.4c00257"
+    doi: "https://doi.org/10.1021/acs.jctc.4c00567"
   image: "/assets/qiankunnet_research/qiankunnet-solid-jctc-2024.png"
 
 - key: dmet-qiankunnet-npjcm-2024
@@ -45,7 +45,7 @@
   tags: ["QiankunNet","DMET","StrongCorrelation","Solid"]
   teaser: "将 Transformer-NNQS 用作 DMET 求解器，面向强关联材料并结合迁移/精调策略提升精度与收敛。"
   links:
-    doi: "https://doi.org/10.1038/s41524-024-01231-8"
+    doi: "https://doi.org/10.1038/s41524-024-01406-3"
   image: "/assets/qiankunnet_research/dmet-qiankunnet-npjcm-2024.png"
 
 - key: qiankunnet-forces-jctc-2024
@@ -57,7 +57,7 @@
   tags: ["QiankunNet","Forces","HellmannFeynman","Molecules"]
   teaser: "在生成式 Transformer 框架下准确计算分子间原子力，遵循/改进 Hellmann–Feynman 思路。"
   links:
-    doi: "https://doi.org/10.1021/acs.jctc.4c00756"
+    doi: "https://doi.org/10.1021/acs.jctc.4c01205"
   image: "/assets/qiankunnet_research/qiankunnet-forces-jctc-2024.png"
 
 - key: bridge-tns-jctc-2025
