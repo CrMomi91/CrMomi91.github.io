@@ -6,13 +6,14 @@ permalink: /qiankunnet_research/
 <title>QiankunNet Research</title>
 <style>
   :root{
-    --bg:#f5f7fa; --ink:#002035; --muted:#7f8c8d; --grad1:#3498db; --grad2:#9b59b6;
-    --card:#ffffff; --line:#2a2e51; --ring:#5f7cff;
+    --bg:#f5f7fa; --ink:#002035; --muted:#59636a; --grad1:#3498db; --grad2:#9b59b6;
+    --card:#ffffff; --line:#dfe5ef; --ring:#5f7cff; --pill:#eef2fb;
   }
   html, body { height: 100%; }
   body{
     margin: 0;
     background: var(--bg);
+    color: var(--ink);
   }
   .wrap{
     padding: 24px 0 64px;
@@ -20,33 +21,24 @@ permalink: /qiankunnet_research/
     margin: 0 auto;
   }
   .hero{
-    color: var(--grad1);
     background: var(--card);
     border-radius: 20px;
     padding: clamp(24px,4vw,48px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     text-align: center;
+    border: 1px solid var(--line);
   }
-  .hero h1{ margin:0 0 8px; font-size: clamp(28px,4vw,44px); }
+  .hero h1{ margin:0 0 8px; font-size: clamp(28px,4vw,44px); color: var(--grad1); }
   .hero p{ margin:0; color: var(--muted); }
-
-  .toolbar{
-    display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center;
-    margin: 18px 0 0;
-  }
-  .chip{
-    padding:8px 12px; border-radius:999px; color: var(--ink);
-    background:var(--bg); cursor:pointer; user-select:none;
-  }
-  .chip.active{ outline:2px solid var(--ring); }
 
   .timeline{ position: relative; margin: 28px 0 0; }
   .timeline::before{
-    content:""; position:absolute; left: 34px; top:0; bottom:0; width:2px; background: linear-gradient(to bottom, var(--grad1), var(--grad2));
+    content:""; position:absolute; left: 34px; top:0; bottom:0; width:2px;
+    background: linear-gradient(to bottom, var(--grad1), var(--grad2));
   }
 
   .year{
-    color:#9fb1ff; font-weight:700; margin: 28px 0 12px;
+    color:#5a6ee6; font-weight:700; margin: 28px 0 12px;
     padding-left: 64px;
   }
 
@@ -58,15 +50,22 @@ permalink: /qiankunnet_research/
   .card{
     background: var(--card);
     border-radius: 16px;
-    overflow: hidden; color: var(--ink);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--line);
   }
   .thumb{ display: block; width: 100%; height: auto; aspect-ratio: 16/9; background: var(--card); }
   .meta{ padding: 12px 16px 0; color: var(--muted); font-size: 14px; }
-  .title{ padding: 4px 16px 0; font-size: 18px; font-weight: 700; line-height: 1.35; }
+  .title{ padding: 4px 16px 0; font-size: 18px; font-weight: 700; line-height: 1.35; color: var(--ink); }
   .teaser{ padding: 8px 16px 0; color: var(--ink); font-size: 14px; }
   .btns{ display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 16px 16px; }
-  .btn{ padding: 8px 10px; border-radius: 10px; background: var(--bg); color: var(--ink); font-size: 14px; text-decoration: none; }
+  .btn{ padding: 8px 10px; border-radius: 10px; background: var(--pill); color: var(--ink); font-size: 14px; text-decoration: none; border:1px solid var(--line); }
+
+  /* 新增：ISSN 与关键词的显示 */
+  .kv{ padding: 8px 16px 0; font-size: 14px; color: var(--muted); }
+  .kv strong{ color: var(--ink); font-weight: 700; margin-right: 6px; }
+  .tags{ padding: 6px 16px 0; display:flex; flex-wrap:wrap; gap:6px; }
+  .tagpill{ background: var(--pill); border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size: 12px; color: var(--ink); }
 
   @media (max-width: 520px){
     .timeline::before{ left: 22px; }
@@ -80,18 +79,7 @@ permalink: /qiankunnet_research/
     <section class="hero">
       <h1>QiankunNet Research</h1>
       <p>Transformer-based NNQS · Molecules & Solids · DMET · VQE · HPC</p>
-
-      <div class="toolbar" id="tags">
-        <span class="chip active" data-tag="all">All</span>
-        {% assign _tags = "" | split: "" %}
-        {% for p in site.data.research_papers %}
-          {% if p.tags %}{% assign _tags = _tags | concat: p.tags %}{% endif %}
-        {% endfor %}
-        {% assign tagset = _tags | uniq | sort %}
-        {% for t in tagset %}
-          <span class="chip" data-tag="{{ t }}">{{ t }}</span>
-        {% endfor %}
-      </div>
+      <!-- 顶端标签筛选已移除，仅保留标题与副标题 -->
     </section>
 
     {% assign groups = site.data.research_papers | group_by: "year" | sort: "name" | reverse %}
@@ -100,16 +88,33 @@ permalink: /qiankunnet_research/
         <h2 class="year">{{ g.name }}</h2>
         {% assign sorted = g.items | sort: "month" | reverse %}
         {% for p in sorted %}
-          <article class="entry" data-tags="{% if p.tags %}{{ p.tags | join: ',' }}{% endif %}">
+          <article class="entry">
             <div class="card">
               {% if p.image %}
                 <img class="thumb" src="{{ p.image }}" alt="teaser for {{ p.title }}">
               {% else %}
                 <div class="thumb" aria-hidden="true"></div>
               {% endif %}
+
               <div class="meta">{{ p.venue }}</div>
               <h3 class="title">{{ p.title }}</h3>
               <div class="meta">{{ p.authors }}</div>
+
+              {%- comment -%} 期刊号（ISSN）：仅当 p.issn 存在且非空时显示 {%- endcomment -%}
+              {% if p.issn and p.issn.size > 0 %}
+                <div class="kv"><strong>期刊号：</strong>{{ p.issn | join: " / " }}</div>
+              {% endif %}
+
+              {%- comment -%} 关键词（tags）：若存在则以小胶囊显示 {%- endcomment -%}
+              {% if p.tags and p.tags.size > 0 %}
+                <div class="kv"><strong>关键词：</strong></div>
+                <div class="tags">
+                  {% for t in p.tags %}
+                    <span class="tagpill">{{ t }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
               {% if p.teaser %}<p class="teaser">{{ p.teaser }}</p>{% endif %}
               <div class="btns">
                 {% if p.links.arxiv %}<a class="btn" href="{{ p.links.arxiv }}">arXiv</a>{% endif %}
@@ -125,17 +130,3 @@ permalink: /qiankunnet_research/
     </section>
   </div>
 </body>
-
-<script>
-  // 标签筛选（兼容时间线布局）
-  const chips=[...document.querySelectorAll('.chip')];
-  const entries=[...document.querySelectorAll('.entry')];
-  chips.forEach(c=>c.addEventListener('click',()=>{
-    chips.forEach(x=>x.classList.remove('active')); c.classList.add('active');
-    const tag=c.dataset.tag;
-    entries.forEach(it=>{
-      const tags=(it.dataset.tags||"").split(',').filter(Boolean);
-      it.style.display=(tag==='all'||tags.includes(tag))?'block':'none';
-    });
-  }));
-</script>

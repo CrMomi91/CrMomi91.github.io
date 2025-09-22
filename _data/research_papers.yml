@@ -11,6 +11,7 @@
   links:
     arxiv: "https://arxiv.org/abs/2307.09343"
   image: "/assets/qiankunnet_research/qiankunnet-2307.png"
+  issn: []  # 预印本，无期刊号
 
 - key: nnqs-transformer-sc23
   year: 2023
@@ -23,6 +24,7 @@
   links:
     doi: "https://dl.acm.org/doi/10.1145/3581784.3607061"
   image: "/assets/qiankunnet_research/nnqs-transformer-sc23.png"
+  issn: []  # 会议论文，无期刊号
 
 - key: qiankunnet-solid-jctc-2024
   year: 2024
@@ -35,6 +37,7 @@
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c00567"
   image: "/assets/qiankunnet_research/qiankunnet-solid-jctc-2024.png"
+  issn: ["1549-9618", "1549-9626"]  # JCTC print / online
 
 - key: dmet-qiankunnet-npjcm-2024
   year: 2024
@@ -47,6 +50,7 @@
   links:
     doi: "https://doi.org/10.1038/s41524-024-01406-3"
   image: "/assets/qiankunnet_research/dmet-qiankunnet-npjcm-2024.png"
+  issn: ["2057-3960"]  # npj Computational Materials (online)
 
 - key: qiankunnet-forces-jctc-2024
   year: 2024
@@ -59,6 +63,7 @@
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c01205"
   image: "/assets/qiankunnet_research/qiankunnet-forces-jctc-2024.png"
+  issn: ["1549-9618", "1549-9626"]  # JCTC print / online
 
 - key: bridge-tns-jctc-2025
   year: 2025
@@ -71,3 +76,4 @@
   links:
     doi: "https://doi.org/10.1021/acs.jctc.4c01703"
   image: "/assets/qiankunnet_research/bridge-tns-jctc-2025.png"
+  issn: ["1549-9618", "1549-9626"]  # JCTC print / online
